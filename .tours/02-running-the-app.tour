@@ -44,12 +44,12 @@
     },
     {
       "title": "WebApp configuration variables",
-      "description": "## Auth0 application values\n\nIn the [Auth0 Dashboard](https://manage.auth0.com/#/applications) you should see a two applications:\n\n1. Default App\n2. WebApp Quickstart Client.\n\nIf you don't see it make sure you in the correct tenant, it must be the one we created a few steps back that starts with `genai` in the name.\n\nThen click on the **WebApp Quickstart Client** to see the Settings."
+      "description": "## Auth0 application values\n\n1. Go to the [Auth0 Dashboard](https://manage.auth0.com/#/applications). You should see two applications:\n\n    - Default App\n    - WebApp Quickstart Client\n\n    >If you don't see these apps, make sure you're in the correct tenant that we created in a previous step. The name of this tenant will start with `genai`.\n\n2. Then select the **WebApp Quickstart Client** link to see the application's Settings page."
     },
     {
       "title": "Update WebApp in the Dashboard",
       "file": "auth0-assistant0/.env.local",
-      "description": "## Auth0 application values - WebApp Quickstart Client.\n\nNow scroll down to **Application URIs** and add the APP_BASE_URL to the settings like so:\n\n\n * In the **Allowed Callback URLs**: `https://{codespaceName}-3000.app.github.dev/auth/callback`\n * In the **Allowed Logout URLs**: `https://{codespaceName}-3000.app.github.dev/`\n\n![](dev_day_steps.jpg)\n![]()\n\nRemember to click save at the bottom of the page.",
+      "description": "## Auth0 application values - WebApp Quickstart Client\n\nNow scroll down to **Application URIs** and add the APP_BASE_URL to the settings like so:\n\n\n * In the **Allowed Callback URLs**: `https://{codespaceName}-3000.app.github.dev/auth/callback`\n * In the **Allowed Logout URLs**: `https://{codespaceName}-3000.app.github.dev/`\n\n![](dev_day_steps.jpg)\n![]()\n\nRemember to click save at the bottom of the page.",
       "line": 6,
       "selection": {
         "start": {
@@ -64,7 +64,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Domain\n\nNow scroll back to the **Basic Information** section in the **Settings** tab you are going to copy the **Domain** and update the `AUTH0_DOMAIN`;",
+      "description": "## Update `.env.local` - Domain\n\n1. Still on your application's Setting tab, scroll up to the **Basic Information** section.\n1. Copy the **Domain**.\n1. Paste the Domain value to the line highlighted above to set the `AUTH0_DOMAIN` variable. Ensure you keep `https://`",
       "line": 7,
       "selection": {
         "start": {
@@ -79,7 +79,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Client ID\n\nCopy the **Client ID** and update the `AUTH0_CLIENT_ID`;",
+      "description": "## Update `.env.local` - Client ID\n\n1. From your application's Setting tab, copy the **Client ID**.\n1. Paste the Client ID to the line highlighted above to set the `AUTH0_CLIENT_ID` variable.",
       "line": 8,
       "selection": {
         "start": {
@@ -94,7 +94,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Client Secret\n\nCopy the **Client Secret** and update the `AUTH0_CLIENT_SECRET`.",
+      "description": "## Update `.env.local` - Client Secret\n\n1. From your application's Setting tab, copy the **Client Secret**.\n1. Paste the Client Secret to the line highlighted above to set the `AUTH0_CLIENT_SECRET` variable.",
       "line": 9,
       "selection": {
         "start": {
@@ -109,7 +109,7 @@
     },
     {
       "title": "Running the app",
-      "description": "## Running Assistant0 for the first time\n\nNow to start things run your application with the command below in the terminal:\n\n```sh\ncd auth0-assistant0\nnpm run dev\n```\n\nAnd click on the **Open Browser** in the dialog that will appear in the bottom right corner.\n\nMake sure to sign up to your application and try asking it *\"What can you help me with?\"*",
+      "description": "## Running Assistant0 for the first time\n\n1. Select [this link](command:workbench.action.debug.start) to deploy the application. \n\n1. Select the **Open in Browser** in the dialog that appears in the bottom right corner to visit your app's URL. \n>If you miss the dialog, you can always select the PORTS tab below next to TERMINALs and then hover over the FORWARDED ADDRESS and select the globe icon to open your app's URL.\n\n1. Sign up for the application.\n1. Once logged in, try asking it *\"What can you help me with?\"*",
       "selection": {
         "start": {
           "line": 10,
