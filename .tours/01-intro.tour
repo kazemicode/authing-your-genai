@@ -17,7 +17,7 @@
     },
     {
       "title": "Prerequisites",
-      "description": "## Prerequisites\n\n1. OpenAI account:\n    * Make sure you have an [OpenAI account and an OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).\n\n2. An Auth0 account:\n    * For this workshop, you will also need an Auth0 account with a new Developer Tenant. You can create an [Auth0 Account and a Dev Tenant here](https://manage.auth0.com/dashboard)."
+      "description": "## Prerequisites\n\n1. OpenAI account:\n    * Make sure you have an OpenAI account\n\n2. An Auth0 account:\n    * For this workshop, you will also need an Auth0 account with a new Developer Tenant. You can create an [Auth0 Account and a Dev Tenant here](https://manage.auth0.com/dashboard)."
     },
     {
       "title": "Set up code",
