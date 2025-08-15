@@ -13,7 +13,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - generate an application secret\n\nGenerate a secret to encode the values.\n\n[Click this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command on the terminal.\n\nCopy the output and update the `AUTH0_SECRET` with that output.",
+      "description": "## Update `.env.local` - generate an application secret\n\nGenerate a secret to encode the values.\n\n[Select this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command on the terminal.\n\nCopy the output and update the `AUTH0_SECRET` with that output.",
       "line": 5,
       "selection": {
         "start": {
@@ -29,7 +29,7 @@
     {
       "title": "Update `.env.local` - Set the app base URL",
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL.\n\n[Click this link](command:codetour.sendTextToTerminal?[\"echo $CODESPACE_NAME\"]) to run the command on the terminal.\n\nCopy the output and update the `APP_BASE_URL` with that value.\n\n-----\n\nAfter the update your APP_BASE_URL should look something like this:\n\n```\nAPP_BASE_URL=\"https://humble-winner-74xv5jxw462r9pv-3000.app.github.dev/\"\n```",
+      "description": "## Update `.env.local` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL.\n\n[Select this link](command:codetour.sendTextToTerminal?[\"echo $CODESPACE_NAME\"]) to run the command on the terminal.\n\nCopy the output and update the `APP_BASE_URL` with that value.\n\n-----\n\nAfter the update your APP_BASE_URL should look something like this:\n\n```\nAPP_BASE_URL=\"https://humble-winner-74xv5jxw462r9pv-3000.app.github.dev/\"\n```",
       "line": 6,
       "selection": {
         "start": {
@@ -49,7 +49,7 @@
     {
       "title": "Update WebApp in the Dashboard",
       "file": "auth0-assistant0/.env.local",
-      "description": "## Auth0 application values - WebApp Quickstart Client\n\nNow scroll down to **Application URIs** and add the APP_BASE_URL to the settings like so:\n\n\n * In the **Allowed Callback URLs**: [Click this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/auth/callback\\\"\"]) and copy the output\n * In the **Allowed Logout URLs**: [Click this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/\\\"\"]) and copy the output\n\nRemember to click **Save** at the bottom of the page.",
+      "description": "## Auth0 application values - WebApp Quickstart Client\n\nNow scroll down to **Application URIs** and add the APP_BASE_URL to the settings like so:\n\n\n * In the **Allowed Callback URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/auth/callback\\\"\"]) and copy the output\n * In the **Allowed Logout URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/\\\"\"]) and copy the output\n\nRemember to select **Save** at the bottom of the page.",
       "line": 6,
       "selection": {
         "start": {

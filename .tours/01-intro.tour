@@ -13,7 +13,7 @@
     },
     {
       "title": "The project",
-      "description": "## Integrations we will implement during the workshop\n\nWe are going to add two integrations to the NextJS chat:\n\n1. **Calculator**: So our assistant can learn how to do calculations; and\n1. **Gmail Integration**: Assistant0 will be able to scan your inbox to generate concise summaries. It can highlight urgent emails, categorizes conversations by importance, and even suggests drafts for quick replies."
+      "description": "## Integrations we will implement during the workshop\n\nWe are going to add two integrations to the NextJS chat:\n\n1. **Calculator**: So our assistant can learn how to do calculations; and\n1. **Gmail Integration**: Assistant0 will be able to scan your inbox to generate concise summaries. It can highlight urgent emails, categorize conversations by importance, and even suggest drafts for quick replies."
     },
     {
       "title": "Prerequisites",
@@ -24,7 +24,7 @@
       "description": "## Set up code\n\nThe great thing about Codespaces is that the dependencies are installed when the Codespaces is initiated so you have everything you'll need as you work through the steps. 🎉"
     },
     {
-      "title": "SetUp - OpenAI API Key",
+      "title": "Set up - OpenAI API Key",
       "file": "auth0-assistant0/.env.local",
       "description": "## OpenAI API Key\n\n1. Log in to your [OpenAI account and grab your OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).\n2. Update the `OPENAI_API_KEY` to host the key you just created.\n\nThis will allow your assistant to use the OpenAI models.",
       "line": 1,
