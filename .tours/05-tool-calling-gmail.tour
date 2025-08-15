@@ -15,19 +15,19 @@
     {
       "file": "auth0-assistant0/src/lib/auth0-ai.ts",
       "description": "## Access Token\n\nFirst, we need to get an access token for the Gmail API. We can get this using the Auth0 Token Vault.\n\nNow you need to do some updates the `auth0-ai.ts` file. Start by adding the new imports:\n\n```ts\nimport { getRefreshToken } from '@/lib/auth0';\nimport { Auth0AI } from '@auth0/ai-langchain';\n\n```\n\nThe first import is gets the function for retrieving refresh tokens. While the second import uses the Auth0 AI LangChain SDK to import a `Auth0AI` a constructor that facilitates using Auth0 with LangChain.",
-      "line": 4
+      "line": 2
     },
     {
       "file": "auth0-assistant0/src/lib/auth0-ai.ts",
       "description": "## Google Connection\n\nNow iniatialize the `auth0AI` and then create the connection with Google.\n```ts\nconst auth0AI = new Auth0AI();\n\n// Connection for Google services\nexport const withGoogleConnection = auth0AI.withTokenForConnection({\n  connection: 'google-oauth2',\n  scopes: ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose'],\n  refreshToken: getRefreshToken,\n});\n```\n\nHere we pass the scopes and the type of connection.\n\nKeep in mind that you'll need to \"login/sign up with Google\" on Assistant0 in order to leverage this feature.",
-      "line": 30,
+      "line": 7,
       "selection": {
         "start": {
-          "line": 9,
+          "line": 7,
           "character": 1
         },
         "end": {
-          "line": 9,
+          "line": 7,
           "character": 29
         }
       }
@@ -35,18 +35,18 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## Look for emails\n\nIn order to read your emails in the Assistant0 chat you'll also need to update the agent code. So open `src/app/api/chat/routes.ts` next to update the tool calling portion\n\nFirst start with the imports:\n\n```ts\nimport { GmailSearch } from '@langchain/community/tools/gmail';\nimport { withGoogleConnection, getAccessToken } from '@/lib/auth0-ai';\n\n```\n\nThe `GmailSearch` is used to do the actual look up in your inbox.",
-      "line": 9
+      "line": 7
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "Let's add a `gmailParams` which will pass the access token as credentials to our tool like this:\n\n```ts\n\nconst gmailParams = {\n    credentials: {\n    accessToken: getAccessToken,\n    },\n};\n\n```",
-      "line": 40,
+      "line": 32,
       "title": "gmailParams"
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "And update the list of tools like this:\n\n```ts\nconst tools = [\n    new Calculator(),\n    withGoogleConnection(new GmailSearch(gmailParams)),\n];\n```\n\nNow test it!",
-      "line": 45,
+      "line": 38,
       "title": "Gmail in the tools list",
       "selection": {
         "start": {
@@ -89,7 +89,7 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## Adding Email Draft tool\n\nAdd the new draft tool to the list of `tools`:\n\n```ts\n      withGoogleConnection(new GmailCreateDraft(gmailParams)),\n```",
-      "line": 45
+      "line": 38
     },
     {
       "title": "Test the drafting tool",
