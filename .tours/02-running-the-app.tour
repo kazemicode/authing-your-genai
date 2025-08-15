@@ -18,11 +18,11 @@
       "selection": {
         "start": {
           "line": 5,
-          "character": 1
+          "character": 15
         },
         "end": {
           "line": 5,
-          "character": 116
+          "character": 70
         }
       }
     },
@@ -109,7 +109,7 @@
     },
     {
       "title": "Running the app",
-      "description": "## Running Assistant0 for the first time\n\n1. Select [this link](command:workbench.action.debug.start) to deploy the application. \n\n1. Select the **Open in Browser** in the dialog that appears in the bottom right corner to visit your app's URL. \n>If you miss the dialog, you can always select the **PORTS** tab below next to **TERMINAL** and then hover over the **FORWARDED ADDRESS** and select the globe icon to open your app's URL.\n\n1. Sign up for the application.\n1. Once logged in, try asking it *\"What can you help me with?\"*\n\n*Tip: on the first try it might take a while for the Assistant to respond to you. Look for the the `POST /api/chat` call in the terminal to know that everything is functioning as expected*",
+      "description": "## Running Assistant0 for the first time\n\n1. Select [this link](command:workbench.action.debug.start) to run the application. \n\n1. Select the **Open in Browser** in the dialog that appears in the bottom right corner to visit your app's URL. \n>If you miss the dialog, you can always select the **PORTS** tab below next to **TERMINAL** and then hover over the **FORWARDED ADDRESS** and select the globe icon to open your app's URL.\n\n1. Sign up for the application.\n1. Once logged in, try asking it *\"What can you help me with?\"*\n\n*Tip: on the first try it might take a while for the Assistant to respond to you. Look for the the `POST /api/chat` call in the terminal to know that everything is functioning as expected*",
       "selection": {
         "start": {
           "line": 6,

@@ -20,7 +20,7 @@
     {
       "file": "auth0-assistant0/src/lib/auth0-ai.ts",
       "description": "## Google Connection\n\nNow iniatialize the `auth0AI` and then create the connection with Google.\n```ts\nconst auth0AI = new Auth0AI();\n\n// Connection for Google services\nexport const withGoogleConnection = auth0AI.withTokenForConnection({\n  connection: 'google-oauth2',\n  scopes: ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose'],\n  refreshToken: getRefreshToken,\n});\n```\n\nHere we pass the scopes and the type of connection.\n\nKeep in mind that you'll need to \"login/sign up with Google\" on Assistant0 in order to leverage this feature.",
-      "line": 23,
+      "line": 30,
       "selection": {
         "start": {
           "line": 9,
@@ -35,7 +35,7 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## Look for emails\n\nIn order to read your emails in the Assistant0 chat you'll also need to update the agent code. So open `src/app/api/chat/routes.ts` next to update the tool calling portion\n\nFirst start with the imports:\n\n```ts\nimport { GmailSearch } from '@langchain/community/tools/gmail';\nimport { withGoogleConnection, getAccessToken } from '@/lib/auth0-ai';\n\n```\n\nThe `GmailSearch` is used to do the actual look up in your inbox.",
-      "line": 10
+      "line": 9
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
@@ -46,15 +46,15 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "And update the list of tools like this:\n\n```ts\nconst tools = [\n    new Calculator(),\n    withGoogleConnection(new GmailSearch(gmailParams)),\n];\n```\n\nNow test it!",
-      "line": 44,
+      "line": 45,
       "title": "Gmail in the tools list",
       "selection": {
         "start": {
-          "line": 41,
+          "line": 42,
           "character": 5
         },
         "end": {
-          "line": 41,
+          "line": 42,
           "character": 38
         }
       }
