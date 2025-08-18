@@ -37,7 +37,7 @@
     },
     {
       "title": "Use the tool",
-      "description": "If your server is not running, [run it by clicking here](command:workbench.action.debug.start) then try asking the assistant to perform some calculations. For example: \"_**what is (2+56) x 200?**_\".\n\nYou should see the answer in the UI. If you check the terminal where the development server is running, you should see the tool calling data like below:\n\n```\nTool calls state: {\n \"call_E3Za9klJcJ5TADWiMj8XfjdB\": {\n   \"name\": \"calculator\",\n   \"args\": \"{\\n  \\\"input\\\": \\\"(2+56) * 200\\\"\\n}\"\n }\n}\nPOST /api/chat 200 in 8382ms\n```\n\nAnd you should see the answer: **11,600**."
+      "description": "If your server is not running, [select this link to run it](command:workbench.action.debug.start) then try asking the assistant to perform some calculations. For example: \"_**what is (2+56) x 200?**_\".\n\nYou should see the answer in the UI. If you check the terminal where the development server is running, you should see the tool calling data like below:\n\n```\nTool calls state: {\n \"call_E3Za9klJcJ5TADWiMj8XfjdB\": {\n   \"name\": \"calculator\",\n   \"args\": \"{\\n  \\\"input\\\": \\\"(2+56) * 200\\\"\\n}\"\n }\n}\nPOST /api/chat 200 in 8382ms\n```\n\nAnd you should see the answer: **11,600**."
     }
   ]
 }
