@@ -20,8 +20,8 @@
       "description": "## Prerequisites\n\n1. OpenAI account:\n    * Make sure you have an OpenAI account\n\n2. An Auth0 account:\n    * For this workshop, you will also need an Auth0 account with a new Developer Tenant. You can create an [Auth0 GenAI Account and a Dev Tenant here](https://auth0.com/ai)."
     },
     {
-      "title": "Set up code",
-      "description": "## Set up code\n\nThe great thing about Codespaces is that the dependencies are installed when the Codespaces is initiated so you have everything you'll need as you work through the steps. 🎉"
+      "title": "Development environment",
+      "description": "## Development environment\n\nWe're using Codespaces as the our cloud-based development enviro0nment. The great thing about Codespaces is that the dependencies are installed when the Codespaces is initiated so you have everything you'll need as you work through the steps. 🎉 \n\nWe will also use the Auth0 Labs extension to automate creating a Regular Web app in your Auth0 tenant and pulling down some configurations for your development environment.\n\n1. Select [this link](command:auth0.auth.signIn) to authorize the Auth0 Labs extension to register an application in your tenant on your behalf. **Be sure to select your *genai-* tenant during this process**.\n2. Next, select [this link](command:auth0.lab.localConfigure) so that the extension will register a Regular Web app named **My Oktane App** in your tenant. The extension will also configure the appropriate callback URLs that will work in your Codespaces environment.\n3. To verify that your app was successfully registered, you can check in your Auth0 Dashboard or select [this link](command:appsView.focus) to view the apps registered to your tenant.\n\nThe Auth0 Labs extension also generated a `.env` file in your `auth0-assistant0` folder. We'll take a look at this next!"
     },
     {
       "title": "Set up - OpenAI API Key",
