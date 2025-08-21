@@ -6,7 +6,7 @@
   "clients": [
     {
       "name": "My Oktane App",
-      "directory": "auth0-assistant",
+      "directory": "auth0-assistant0",
       "env": {
         "OPENAI_API_KEY": "YOUR_API_KEY",
         "LANGCHAIN_CALLBACKS_BACKGROUND": "false",

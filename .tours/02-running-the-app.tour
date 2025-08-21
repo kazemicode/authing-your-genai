@@ -10,14 +10,14 @@
     {
       "file": "auth0-assistant0/.env",
       "description": "## Auth0 .env variables\n\n>Notice that `./auth0-assistant/.env` has been opened for you above.\n\nThe Auth0 Labs extension pulled down the values for you when it generated the .env. *Optionally*, you can verify that these are correct against your Auth0 dashboard by visiting the **Settings** tab of your My Oktane App.\n\nYou'll still need to configure your app's base URL and your OpenAI API key. We'll do that next.\n\n",
-      "line": 7,
+      "line": 8,
       "selection": {
         "start": {
-          "line": 4,
+          "line": 5,
           "character": 1
         },
         "end": {
-          "line": 7,
+          "line": 8,
           "character": 35
         }
       }
@@ -26,6 +26,21 @@
       "title": "Update `.env` - Set the app base URL",
       "file": "auth0-assistant0/.env",
       "description": "## Update `.env` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL.\n\n1. [Select this link](command:codetour.sendTextToTerminal?[\"echo https://$CODESPACE_NAME-3000.app.github.dev/\"]) to run the command on the terminal.\n\n2. Copy the output and update the `APP_BASE_URL` with that value.\n\n-----\n\nAfter the update your APP_BASE_URL should look something like this:\n\n```\nAPP_BASE_URL=\"https://humble-winner-74xv5jxw462r9pv-3000.app.github.dev/\"\n```",
+      "line": 4,
+      "selection": {
+        "start": {
+          "line": 4,
+          "character": 14
+        },
+        "end": {
+          "line": 4,
+          "character": 38
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env",
+      "description": "## Update `.env` - generate an application secret\n\nNow let's generate a secret to encode the values.\n\n1. Select [this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command `openssl rand -hex 32` in the terminal.\n\n2. Copy the output and update the value of the `AUTH0_SECRET` variable highlighted on the line above.",
       "line": 3,
       "selection": {
         "start": {
@@ -34,21 +49,6 @@
         },
         "end": {
           "line": 3,
-          "character": 38
-        }
-      }
-    },
-    {
-      "file": "auth0-assistant0/.env",
-      "description": "## Update `.env` - generate an application secret\n\nNow let's generate a secret to encode the values.\n\n1. Select [this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command `openssl rand -hex 32` in the terminal.\n\n2. Copy the output and update the value of the `AUTH0_SECRET` variable highlighted on the line above.",
-      "line": 2,
-      "selection": {
-        "start": {
-          "line": 2,
-          "character": 14
-        },
-        "end": {
-          "line": 2,
           "character": 70
         }
       }
