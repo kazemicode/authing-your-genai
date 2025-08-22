@@ -13,7 +13,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - generate an application secret\n\nGenerate a secret to encode the values.\n\n[Select this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command on the terminal.\n\nCopy the output and update the `AUTH0_SECRET` with that output.",
+      "description": "## Update `.env.local` - generate an application secret\n\nNow let's generate a secret to encode the values.\n\n1. Select [this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command `openssl rand -hex 32` in the terminal.\n\n2. Copy the output and update the value of the `AUTH0_SECRET` variable highlighted on the line above.",
       "line": 5,
       "selection": {
         "start": {
@@ -69,11 +69,11 @@
       "selection": {
         "start": {
           "line": 7,
-          "character": 23
+          "character": 15
         },
         "end": {
           "line": 7,
-          "character": 35
+          "character": 27
         }
       }
     },
