@@ -16,7 +16,7 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "Add a `tools` variable like this to use the calculator as tool in the chat:\n\n```ts\n\nconst tools = [new Calculator()];\n```",
-      "line": 33,
+      "line": 32,
       "title": "Create a list of tools"
     },
     {

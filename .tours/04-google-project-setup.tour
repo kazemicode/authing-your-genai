@@ -86,7 +86,7 @@
     },
     {
       "title": "Configure Google Social Connection in Auth0 - cont",
-      "description": "6. Navigate to the **Advanced Settings** section:\n    1. Ensure **Token Vault** is _enabled_ - using Auth0's Token Vault feature to allow your backend to call Google APIs on behalf of the user. This is key for our use case with Auth0 for GenAI.\n\n7. Select **Save Changes**."
+      "description": "6. Navigate to the **Advanced** section:\n    1. Ensure **Token Vault** is _enabled_ - using Auth0's Token Vault feature to allow your backend to call Google APIs on behalf of the user. This is key for our use case with Auth0 for GenAI.\n7. Select **Save Changes**.\n\nOne last thing to do before you can start adding code to use the Gmail API within Assistant0.\n\n1. After enabling the Token Vault, go back to **Applications > Applications**:\n    1. Select your **My Oktane App** and in the Settings tab navigate to the bottom to the **Advanced Settings**\n    2. Change to the **Grant Types** tab and select the **Token Exchange (Federated Connection)**\n\n"
     }
   ]
 }

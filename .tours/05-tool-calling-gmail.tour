@@ -35,7 +35,7 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## Look for emails\n\nIn order to read your emails in the Assistant0 chat you'll also need to update the agent code. So open `src/app/api/chat/routes.ts` next to update the tool calling portion\n\nFirst start with the imports:\n\n```ts\nimport { GmailSearch } from '@langchain/community/tools/gmail';\nimport { withGoogleConnection, getAccessToken } from '@/lib/auth0-ai';\n\n```\n\nThe `GmailSearch` is used to do the actual look up in your inbox.",
-      "line": 7
+      "line": 8
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
@@ -46,15 +46,15 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "And update the list of tools like this:\n\n```ts\nconst tools = [\n    new Calculator(),\n    withGoogleConnection(new GmailSearch(gmailParams)),\n];\n```\n\nNow test it!",
-      "line": 42,
+      "line": 41,
       "title": "Gmail in the tools list",
       "selection": {
         "start": {
-          "line": 42,
+          "line": 41,
           "character": 5
         },
         "end": {
-          "line": 42,
+          "line": 41,
           "character": 38
         }
       }
@@ -74,22 +74,22 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## GmailCreateDraft\n\nFirst update the list of imports:\n\n```ts\nimport { GmailSearch, GmailCreateDraft } from '@langchain/community/tools/gmail';\n```\n\nThe `GmailCreateDraft` is used to draft emails for you.\n",
-      "line": 7,
+      "line": 8,
       "selection": {
         "start": {
-          "line": 7,
+          "line": 8,
           "character": 1
         },
         "end": {
-          "line": 7,
+          "line": 8,
           "character": 67
         }
       }
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
-      "description": "## Adding Email Draft tool\n\nAdd the new draft tool to the list of `tools`:\n\n```ts\n      withGoogleConnection(new GmailCreateDraft(gmailParams)),\n```",
-      "line": 45
+      "description": "## Adding Email Draft tool\n\nAdd the new draft tool to the list of `tools`:\n\n```ts\n      withGoogleConnection(new GmailCreateDraft(gmailParams)),\n      \n```",
+      "line": 44
     },
     {
       "title": "Test the drafting tool",
