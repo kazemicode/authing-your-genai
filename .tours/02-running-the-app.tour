@@ -64,7 +64,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Domain\n\n1. Still on your application's Settings tab, scroll up to the **Basic Information** section.\n1. Copy the **Domain**.\n1. Paste the Domain value to the line highlighted above to set the `AUTH0_DOMAIN` variable. Ensure you keep `https://`",
+      "description": "## Update `.env.local` - Domain\n\n1. Still on your application's Settings tab, scroll up to the **Basic Information** section.\n1. Copy the **Domain**.\n1. Paste the Domain value to the line highlighted above to set the `AUTH0_DOMAIN` variable. Ensure you **don't** have a `https://` otherwise the connection with Gmail later will fail.",
       "line": 7,
       "selection": {
         "start": {
