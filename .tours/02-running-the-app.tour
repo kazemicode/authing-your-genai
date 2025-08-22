@@ -5,73 +5,107 @@
   "steps": [
     {
       "title": "Assistant0",
-      "description": "# Running Assistant0 for the first time\n\nAssistant0 is built in NextJS and already has all the dependencies installed for you to start using it, including the the [Auth0 NextJS SDK](https://auth0.com/docs/quickstart/webapp/nextjs/01-login#install-the-auth0-next-js-sdk) to take care of auth for you.\n\nFor the GenAI portion we are going to use [LangGraph](https://www.langchain.com/langgraph).\n\nBefore we can run the application, we need to verify that our app's `.env` file is set up properly."
+      "description": "# Running Assistant0 for the first time\n\nAssistant0 is built in NextJS and already has all the dependencies installed for you to start using it, including the the [Auth0 NextJS SDK](https://auth0.com/docs/quickstart/webapp/nextjs/01-login#install-the-auth0-next-js-sdk) to take care of auth for you.\n\nFor the GenAI portion we are going to use [LangGraph](https://www.langchain.com/langgraph)."
     },
     {
-      "file": "auth0-assistant0/.env",
-      "description": "## Auth0 .env variables\n\n>Notice that `./auth0-assistant/.env` has been opened for you above.\n\nThe Auth0 Labs extension pulled down the values for you when it generated the .env. *Optionally*, you can verify that these are correct against your Auth0 dashboard by visiting the **Settings** tab of your My Oktane App.\n\nYou'll still need to configure your app's base URL and your OpenAI API key. We'll do that next.\n\n",
-      "line": 8,
+      "title": "Understanding the code",
+      "description": "## Understanding the code\n\nThis is the application structure:\n\n- `src/app`: Contains the Next.js application routes, layout, and pages.\n- `src/app/page.tsx`: Home page with chat interface.\n- `src/app/api/chat/route.ts`: API route for handling chat requests. This is where the AI agent is defined.\n- `src/components`: UI components used in the application.\n- `src/lib`: Services and configurations. This is where custom tools will be defined.\n- `src/utils`: Utility functions\n- `.env.local`: File to hold the environment variables"
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - generate an application secret\n\nGenerate a secret to encode the values.\n\n[Select this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command on the terminal.\n\nCopy the output and update the `AUTH0_SECRET` with that output.",
+      "line": 5,
       "selection": {
         "start": {
           "line": 5,
-          "character": 1
+          "character": 15
         },
         "end": {
-          "line": 8,
-          "character": 35
-        }
-      }
-    },
-    {
-      "title": "Update `.env` - Set the app base URL",
-      "file": "auth0-assistant0/.env",
-      "description": "## Update `.env` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL.\n\n1. [Select this link](command:codetour.sendTextToTerminal?[\"echo https://$CODESPACE_NAME-3000.app.github.dev/\"]) to run the command on the terminal.\n\n2. Copy the output and update the `APP_BASE_URL` with that value.\n\n-----\n\nAfter the update your APP_BASE_URL should look something like this:\n\n```\nAPP_BASE_URL=\"https://humble-winner-74xv5jxw462r9pv-3000.app.github.dev/\"\n```",
-      "line": 4,
-      "selection": {
-        "start": {
-          "line": 4,
-          "character": 14
-        },
-        "end": {
-          "line": 4,
-          "character": 38
-        }
-      }
-    },
-    {
-      "file": "auth0-assistant0/.env",
-      "description": "## Update `.env` - generate an application secret\n\nNow let's generate a secret to encode the values.\n\n1. Select [this link](command:codetour.sendTextToTerminal?[\"openssl rand -hex 32\"]) to run the command `openssl rand -hex 32` in the terminal.\n\n2. Copy the output and update the value of the `AUTH0_SECRET` variable highlighted on the line above.",
-      "line": 3,
-      "selection": {
-        "start": {
-          "line": 3,
-          "character": 14
-        },
-        "end": {
-          "line": 3,
+          "line": 5,
           "character": 70
         }
       }
     },
     {
-      "title": "Set up - OpenAI API Key",
-      "file": "auth0-assistant0/.env",
-      "description": "## OpenAI API Key\n> If you closed your OpenAI tab, [log back in](https://auth.openai.com/log-in).\n\n1. From your OpenAI account, [create an API key](https://platform.openai.com/api-keys).\n2. Copy the value of this API key.\n2. Update the `OPENAI_API_KEY` variable on the highlighted line above by pasting the value of your API key.\n\n>This will allow your assistant to use the OpenAI models.",
-      "line": 1,
+      "title": "Update `.env.local` - Set the app base URL",
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL.\n\n[Select this link](command:codetour.sendTextToTerminal?[\"echo $CODESPACE_NAME\"]) to run the command on the terminal.\n\nCopy the output and update the `APP_BASE_URL` with that value.\n\n-----\n\nAfter the update your APP_BASE_URL should look something like this:\n\n```\nAPP_BASE_URL=\"https://humble-winner-74xv5jxw462r9pv-3000.app.github.dev/\"\n```",
+      "line": 6,
       "selection": {
         "start": {
-          "line": 1,
-          "character": 16
+          "line": 6,
+          "character": 23
         },
         "end": {
-          "line": 1,
-          "character": 29
+          "line": 6,
+          "character": 38
         }
       }
     },
     {
-      "title": "Understanding the code",
-      "description": "## Understanding the code\n\nThis is the application structure:\n\n- `src/app`: Contains the Next.js application routes, layout, and pages.\n- `src/app/page.tsx`: Home page with chat interface.\n- `src/app/api/chat/route.ts`: API route for handling chat requests. This is where the AI agent is defined.\n- `src/components`: UI components used in the application.\n- `src/lib`: Services and configurations. This is where custom tools will be defined.\n- `src/utils`: Utility functions\n- `.env`: File to hold the environment variables"
+      "title": "WebApp configuration variables",
+      "description": "## Auth0 application values\n\n1. Go to the [Auth0 Dashboard](https://manage.auth0.com/#/applications). And create and configure an Auth0 Application with the following properties:\n\n    - Type: `Regular Web`\n    - Name: `My Oktane App`\n\n2. Then select the **Settings** tab on your **My Oktane App** page."
+    },
+    {
+      "title": "Update WebApp in the Dashboard",
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Auth0 application values - WebApp Quickstart Client\n\nNow scroll down to **Application URIs** and add the APP_BASE_URL to the settings like so:\n\n\n * In the **Allowed Callback URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/auth/callback\\\"\"]) and copy the output\n * In the **Allowed Logout URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/\\\"\"]) and copy the output\n\nRemember to select **Save** at the bottom of the page.",
+      "line": 6,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 15
+        },
+        "end": {
+          "line": 6,
+          "character": 100
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Domain\n\n1. Still on your application's Settings tab, scroll up to the **Basic Information** section.\n1. Copy the **Domain**.\n1. Paste the Domain value to the line highlighted above to set the `AUTH0_DOMAIN` variable. Ensure you keep `https://`",
+      "line": 7,
+      "selection": {
+        "start": {
+          "line": 7,
+          "character": 23
+        },
+        "end": {
+          "line": 7,
+          "character": 35
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Client ID\n\n1. From your application's Setting tab, copy the **Client ID**.\n1. Paste the Client ID to the line highlighted above to set the `AUTH0_CLIENT_ID` variable.",
+      "line": 8,
+      "selection": {
+        "start": {
+          "line": 8,
+          "character": 18
+        },
+        "end": {
+          "line": 8,
+          "character": 32
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Client Secret\n\n1. From your application's Setting tab, copy the **Client Secret**.\n1. Paste the Client Secret to the line highlighted above to set the `AUTH0_CLIENT_SECRET` variable.",
+      "line": 9,
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 22
+        },
+        "end": {
+          "line": 9,
+          "character": 40
+        }
+      }
     },
     {
       "title": "Running the app",
