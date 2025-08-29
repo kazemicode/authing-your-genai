@@ -26,7 +26,7 @@
     {
       "title": "Set up - OpenAI API Key",
       "file": "auth0-assistant0/.env.local",
-      "description": "## OpenAI API Key\n\n1. Log in to your [OpenAI account and grab your OpenAI API key](https://platform.openai.com/api-keys).\n2. Update the `OPENAI_API_KEY` on the line highlighted above by copying and pasting the value of to host the key you just created.\n\nThis will allow your assistant to use the OpenAI models.",
+      "description": "## OpenAI API Key\n\n1. Log in to your [OpenAI account and create an OpenAI API key](https://platform.openai.com/api-keys).\n2. Update the `OPENAI_API_KEY` on the line highlighted above by copying and pasting the value of to host the key you just created.\n\nThis will allow your assistant to use the OpenAI models.",
       "line": 1,
       "selection": {
         "start": {

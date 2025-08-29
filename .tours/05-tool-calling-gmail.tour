@@ -61,7 +61,7 @@
     },
     {
       "title": "Log in again",
-      "description": "## Run the app and log in again\n\n[Run the application](command:codetour.sendTextToTerminal?[\"cd auth0-assistant0;npm run dev\"]) again. \n\nYou should logout of the app and login again as you'll be able to see the consent screen while logging in to allow the scopes for your user."
+      "description": "## Run the app and log in again\n\n[Run the application](command:codetour.sendTextToTerminal?[\"cd auth0-assistant0;npm run dev\"]) again. \n\nYou should logout of the app and login again to go throught the consent screen while logging in and to allow the scopes for your user.\n\nTip: Make sure to use a Google account you added as a test user, otherwise the login will fail."
     },
     {
       "title": "Testing the new tool",

@@ -29,16 +29,16 @@
     {
       "title": "Update `.env.local` - Set the app base URL",
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL.\n\n[Select this link](command:codetour.sendTextToTerminal?[\"echo $CODESPACE_NAME\"]) to run the command on the terminal.\n\nCopy the output and update the `APP_BASE_URL` with that value.\n\n-----\n\nAfter the update your APP_BASE_URL should look something like this:\n\n```\nAPP_BASE_URL=\"https://humble-winner-74xv5jxw462r9pv-3000.app.github.dev/\"\n```",
+      "description": "## Update `.env.local` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL.\n\n1. [Select this link](command:codetour.sendTextToTerminal?[\"echo https://$CODESPACE_NAME-3000.app.github.dev/\"]) to run the command on the terminal.\n2. Copy the output and update the `APP_BASE_URL` with that value.\n\n-----\n\nAfter the update your APP_BASE_URL should look something like this:\n\n```\nAPP_BASE_URL=\"https://humble-winner-74xv5jxw462r9pv-3000.app.github.dev/\"\n```",
       "line": 6,
       "selection": {
         "start": {
           "line": 6,
-          "character": 23
+          "character": 15
         },
         "end": {
           "line": 6,
-          "character": 38
+          "character": 32
         }
       }
     },
@@ -109,7 +109,7 @@
     },
     {
       "title": "Running the app",
-      "description": "## Running Assistant0 for the first time\n\n1. Select [this link](command:workbench.action.debug.start) to run the application. \n\n1. Select the **Open in Browser** in the dialog that appears in the bottom right corner to visit your app's URL. \n>If you miss the dialog, you can always select the **PORTS** tab below next to **TERMINAL** and then hover over the **FORWARDED ADDRESS** and select the globe icon to open your app's URL.\n\n1. Sign up for the application.\n1. Once logged in, try asking it *\"What can you help me with?\"*\n\n*Tip: on the first try it might take a while for the Assistant to respond to you. Look for the the `POST /api/chat` call in the terminal to know that everything is functioning as expected*",
+      "description": "## Running Assistant0 for the first time\n\n1. Select [this link](command:workbench.action.debug.start) to run the application. \n\n1. Select the **Open in Browser** in the dialog that appears in the bottom right corner to visit your app's URL. \n>If you miss the dialog, you can always select the **PORTS** tab below next to **TERMINAL** and then hover over the **FORWARDED ADDRESS** and select the globe icon to open your app's URL.\n\n1. Sign up for the application. Make sure to sing up with Google to leverage the Gmail tool call.\n1. Once logged in, try asking it *\"What can you help me with?\"*\n\n*Tip: on the first try it might take a while for the Assistant to respond to you. Look for the the `POST /api/chat` call in the terminal to know that everything is functioning as expected*",
       "selection": {
         "start": {
           "line": 6,

@@ -14,17 +14,7 @@
     },
     {
       "title": "Google project",
-      "description": "## Set up a Google project\n\nTo create a Google project:\n\n1. Go to the [API Console](https://console.developers.google.com/).\n2. Select the projects list, then select the **Create Project (+)** button.\n3. Enter a name and edit the project ID or accept the default.\n\n    Note that the project ID cannot be changed after the project is created, so choose an ID that you'll be comfortable using for the lifetime of the project.\n4. Select **Create**.\n\nFor more details see this [Google Support Topic](https://support.google.com/googleapi/answer/6251787?ref_topic=7014522).",
-      "selection": {
-        "start": {
-          "line": 14,
-          "character": 12
-        },
-        "end": {
-          "line": 14,
-          "character": 18
-        }
-      }
+      "description": "## Set up a Google project\n\nTo create a Google project:\n\n1. Go to the [API Console](https://console.developers.google.com/).\n2. Select the projects list, then select the **New Project (+)** button.\n\n   _Note:_ you don't need to setup the billing account for this tutorial.\n3. Enter a name and edit the project ID or accept the default.\n\n    _Note:_ the project ID cannot be changed after the project is created, so choose an ID that you'll be comfortable using for the lifetime of the project.\n4. Select **Create**.\n\nFor more details see this [Google Support Topic](https://support.google.com/googleapi/answer/6251787?ref_topic=7014522)."
     },
     {
       "title": "Enable Gmail API",
@@ -40,17 +30,7 @@
     },
     {
       "title": "Configure OAuth consent screen and credentials.",
-      "description": "## Configure OAuth consent screen\n\nIn the Google Cloud Console, [configure your Google OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent):\n1. **Configure Authorized domains:** \n    1. Navigate to **[Google Auth Platform > Branding](https://console.cloud.google.com/auth/branding)**\n    2. Under **Authorized domains**, select **+ Add domain**\n    3. Add in `auth0.com`. If you’re using a custom domain in Auth0, enter your custom domain instead\n    4. Add in also `github.dev` since we are using GitHub Codespaces to serve our application\n    5. Select **Save** at the bottom.\n\n2. **Configure test users:**\n    1. Navigate to Google **[Auth Platform > Audience](https://console.cloud.google.com/auth/audience)**.\n    2. In Test Users, you can add the email addresses you want to use for testing. These must be valid Gmail account.\n\n3. **Configure Data Access:** \n    1. Navigate to Google **[Auth Platform > Data Access](https://console.cloud.google.com/auth/audience)**\n    2. Select **Add or remove scopes**\n    3. Search for `gmail` on the banner and select the following three from the list:\n        1. `.../auth/gmail.readonly` - to read emails\n        2. `.../auth/gmail.compose` - to draft and send emails\n\n4. Navigate to the bottom and select **Update**.\n\n5. Select **Save** at the end.",
-      "selection": {
-        "start": {
-          "line": 20,
-          "character": 6
-        },
-        "end": {
-          "line": 20,
-          "character": 18
-        }
-      }
+      "description": "## Configure OAuth consent screen\n\nIn the Google Cloud Console, [configure your Google OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent):\n1. **Configure Authorized domains:** \n    1. Navigate to **[Google Auth Platform > Branding](https://console.cloud.google.com/auth/branding)**\n    2. Under **Authorized domains**, select **+ Add domain**\n    3. Add in `auth0.com`. If you’re using a custom domain in Auth0, enter your custom domain instead\n    4. Add in also `github.dev` since we are using GitHub Codespaces to serve our application\n    5. Select **Save** at the bottom.\n\n2. **Configure test users:**\n    1. Navigate to Google **[Auth Platform > Audience](https://console.cloud.google.com/auth/audience)**.\n    2. In Test Users, you can add the email addresses you want to use for testing. These must be valid Gmail account.\n\n3. **Configure Data Access:** \n    1. Navigate to Google **[Auth Platform > Data Access](https://console.cloud.google.com/auth/audience)**\n    2. Select **Add or remove scopes**\n    3. Search for `gmail` on the banner and select the following three from the list:\n        1. `.../auth/gmail.readonly` - to read emails\n        2. `.../auth/gmail.compose` - to draft and send emails\n\n4. Navigate to the bottom and select **Update**.\n\n5. Select **Save** at the end."
     },
     {
       "title": "Configure Google OAuth client",
@@ -68,17 +48,7 @@
     },
     {
       "title": "Configure Google Social Connection in Auth0",
-      "description": "## Configure Google Social Connection in Auth0\n\nNow, let's tell Auth0 how to use the Google credentials you just created. By default Auth0 uses development keys for the Google Social Connection, so now that you have a \"real\" one, is time to update that.\n\n1. Go back to the [Auth0 Dashboard](https://manage.auth0.com).\n2. Navigate to [Authentication > Social](https://manage.auth0.com/#/connections/social).\n3. Select on the **google-oauth2** in the list of social connections.\n4. Add the information you have from the Google OAuth Client:\n    * **Client ID**: Paste the Client ID from your Google Cloud Project.\n    * **Client Secret**: Paste the Client Secret from your Google Cloud Project.\n",
-      "selection": {
-        "start": {
-          "line": 1,
-          "character": 1
-        },
-        "end": {
-          "line": 15,
-          "character": 55
-        }
-      }
+      "description": "## Configure Google Social Connection in Auth0\n\nNow, let's tell Auth0 how to use the Google credentials you just created. By default Auth0 uses development keys for the Google Social Connection, so now that you have a \"real\" one, is time to update that.\n\n1. Go back to the [Auth0 Dashboard](https://manage.auth0.com).\n2. Navigate to [Authentication > Social](https://manage.auth0.com/#/connections/social).\n3. Select on the **google-oauth2** in the list of social connections.\n4. Add the information you have from the Google OAuth Client:\n    * **Client ID**: Paste the Client ID from your Google Cloud Project.\n    * **Client Secret**: Paste the Client Secret from your Google Cloud Project.\n\n⚠️ _Tip:_ If you get an \"Access Blocked\" make sure that your Client ID and Client Secret **do not have** any leading or trailing blank spaces."
     },
     {
       "title": "Configure Google Social Connection in Auth0 -  cont",
