@@ -17,7 +17,7 @@
     },
     {
       "title": "Prerequisites",
-      "description": "## Prerequisites: Create the accounts you need\n\nFor this lab, you will need to create:\n\n1. OpenAI account:\n    * If you have one you can [log in to your existing account](https://platform.openai.com/login) now. If you do not, [create one now](https://auth.openai.com/create-account).\n\n2. An Auth0 account with a **new** Developer tenant:\n    * [Create a new tenant now](https://auth0.com/ai).\n\n> Once you complete these steps, you should be signed in to both your OpenAI account and your new Auth0 tenant with a name that starts with **genai-**. Keep these tabs open for future steps."
+      "description": "## Prerequisites: Create the accounts you need\n\nFor this lab, you will need to create:\n\n1. OpenAI account:\n    * If you have one you can [log in to your existing account](https://platform.openai.com/login) now. If you do not, [create one now](https://auth.openai.com/create-account).\n\n2. An Auth0 account with a **new** Developer tenant:\n    * [Sign Up to create a new tenant now](https://auth0.com/ai).\n\n> Once you complete these steps, you should be signed in to both your OpenAI account and your new Auth0 tenant with a name that starts with **genai-**. Keep these tabs open for future steps."
     },
     {
       "title": "Set up code",
