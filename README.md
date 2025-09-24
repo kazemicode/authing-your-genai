@@ -1,4 +1,4 @@
-# Auth-ing your GenAI: Implementing Auth and Tool Calling in a NextJS-based chat with Auth for GenAI
+# Auth-ing your GenAI: Implementing Auth and Tool Calling in a NextJS-based chat with Auth0 for AI Agents
 
 Welcome to the Oktane workshop, let's have fun and learn about tool calling.
 
