@@ -4,7 +4,7 @@
   "steps": [
     {
       "title": "Recap",
-      "description": "# Recap your learnings\n\nNow that Assistant0 has the Calculator and Gmail. 🎉🎉🎉\n\nWith that you learned what tool calling is, added 3 tools to your agent, and you learned how to setup Google to use the Google APIs for tool calling with Auth for GenAI.\n\nThank you for participating and don't forget to share what you learned and tag us!\n\nShow us what you build by tagging us on social:\n\n* **X** [@auth0](https://x.com/auth0)\n* **LinkedIn** [Auth0](https://www.linkedin.com/company/auth0)\n* **GitHub** [Auth0](https://github.com/auth0)\n",
+      "description": "# Recap your learnings\n\nNow that Assistant0 has the Calculator and Gmail. 🎉🎉🎉\n\nWith that you learned what tool calling is, added 3 tools to your agent, and you learned how to setup Google to use the Google APIs for tool calling with Auth0 for AI Agents.\n\nThank you for participating and don't forget to share what you learned and tag us!\n\nShow us what you build by tagging us on social:\n\n* **X** [@auth0](https://x.com/auth0)\n* **LinkedIn** [Auth0](https://www.linkedin.com/company/auth0)\n* **GitHub** [Auth0](https://github.com/auth0)\n",
       "type": "markdown"
     },
     {
