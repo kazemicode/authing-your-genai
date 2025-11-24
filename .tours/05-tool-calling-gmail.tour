@@ -19,7 +19,7 @@
     },
     {
       "file": "auth0-assistant0/src/lib/auth0-ai.ts",
-      "description": "## Google Connection\n\nNow iniatialize the `auth0AI` and then create the connection with Google.\n```ts\nconst auth0AI = new Auth0AI();\n\n// Connection for Google services\nexport const withGoogleConnection = auth0AI.withTokenForConnection({\n  connection: 'google-oauth2',\n  scopes: ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose'],\n  refreshToken: getRefreshToken,\n});\n```\n\nHere we pass the scopes and the type of connection.\n\nKeep in mind that you'll need to \"login/sign up with Google\" on Assistant0 in order to leverage this feature.",
+      "description": "## Google Connection\n\nNow iniatialize the `auth0AI` and then create the connection with Google.\n```ts\nconst auth0AI = new Auth0AI();\n\n// Connection for Google services\nexport const withGoogleConnection = auth0AI.withTokenVault({\n  connection: 'google-oauth2',\n  scopes: ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose'],\n  refreshToken: getRefreshToken,\n});\n```\n\nHere we pass the scopes and the type of connection.\n\nKeep in mind that you'll need to \"login/sign up with Google\" on Assistant0 in order to leverage this feature.",
       "line": 7,
       "selection": {
         "start": {
