@@ -1,32 +1,20 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "1 - Authing your GenAI",
+  "title": "1 - Setup",
   "nextTour": "2 - Running the application",
   "steps": [
     {
       "title": "Introduction",
-      "description": "## Introduction to tool calling and Assistant0 set up\n\nLet's get started! Our assistant named Assistant0 is an AI personal assistant that consolidates your digital life by dynamically accessing multiple tools to help you stay organized and efficient.\n\nIt is built in NextJS and we'll add tool calling to it to make it more powerful.\n\nIf you don't know NextJS, don't worry! This workshop is meant to be friendly to developers of all levels. \n\nAs you go through this Codetour, you can select the navigation link below to proceed to the next step."
-    },
-    {
-      "title": "What is tool calling?",
-      "description": "## What is tool calling?\n\nTool calling is the way we call the integrations your GenAI-powered application has in order to gain some ability to interact with external services.\n\nFor example, a tool with Gmail and Google Calendar integration can help you speedily draft emails and schedule meetings.\n\nTools allow your AI agent to go beyond its pre-trained knowledge and interact with the real world, access private data securely, and perform actions on behalf of the user."
-    },
-    {
-      "title": "The project",
-      "description": "## Integrations we will implement during the workshop\n\nWe are going to add two integrations to the NextJS chat:\n\n1. **Calculator**: So our assistant can learn how to do calculations; and\n1. **Gmail Integration**: Assistant0 will be able to scan your inbox to generate concise summaries. It can highlight urgent emails, categorize conversations by importance, and even suggest drafts for quick replies."
+      "description": "## Introduction \n\nIn this lab, you will set up an NextJS+Gemini AI assistant named Assistant0 that uses multiple tools to help you with everyday tasks. Tools add to your AI agent's capabilities by exptending its pretrained knowledge by connecting to first- or third-party APIs to perform actions on behalf of the authenticated user. \nFor example, a tool with Gmail and Google Calendar integration can help you speedily draft emails and schedule meetings.\n\nWe are going to add two tools to our AI assistant:\n\n1. **Calculator**: So our assistant can learn how to do calculations; and\n1. **Gmail Integration**: Assistant0 will be able to scan your inbox to generate concise summaries. It can highlight urgent emails, categorize conversations by importance, and even suggest drafts for quick replies."
     },
     {
       "title": "Prerequisites",
-      "description": "## Prerequisites: Create the accounts you need\n\nFor this lab, you will need to create:\n\n1. OpenAI account:\n    * If you have one you can [log in to your existing account](https://platform.openai.com/login) now. If you do not, [create one now](https://auth.openai.com/create-account).\n\n2. An Auth0 account with a **new** Developer tenant:\n    * [Sign Up to create a new tenant now](https://auth0.com/ai).\n\n> Once you complete these steps, you should be signed in to both your OpenAI account and your new Auth0 tenant with a name that starts with **genai-**. Keep these tabs open for future steps."
+      "description": "## Prerequisites\n\nIn addition to your Auth0 account, you will need a Google AI Studio account to generate a Gemini API key. Though you can use any AI model, we use Gemini for this lab since it has a free tier that does not require the input of a credit card.\n\n1. If you don't have one already, create a free account at https://ai.google.dev/aistudio. \n2. Sign into your Google AI Studio account.\n3. Select the **Get API key** button.\n4. Select the **+ Create API key** button.\n5. *If you have multiple existing projects in your account*, you will be asked to select a project and prompted to select an additional **Create API key in existing project** button.\n\n>Your Gemini API key is generated on the next page. Keep this open for the next step."
     },
     {
-      "title": "Set up code",
-      "description": "## Set up code\n\nThe great thing about Codespaces is that the dependencies are installed when the Codespaces is initiated so you have everything you'll need as you work through the steps. 🎉"
-    },
-    {
-      "title": "Set up - OpenAI API Key",
+      "title": "Set GOOGLE_API_KEY",
       "file": "auth0-assistant0/.env.local",
-      "description": "## OpenAI API Key\n\n1. Log in to your [OpenAI account and create an OpenAI API key](https://platform.openai.com/api-keys).\n2. Update the `OPENAI_API_KEY` on the line highlighted above by copying and pasting the value of to host the key you just created.\n\nThis will allow your assistant to use the OpenAI models.",
+      "description": "## Set GOOGLE_API_KEY\n\n1. From the Google Gemini window, select the key that was just generated (under the **Key** column to reveal its value.\n2. Select the **Copy** button to copy your API key.\n3. Paste this value on the line highlighted above to set the **GOOGLE_API_KEY** variable.\n4. You may now exit the Google AI Studio tab.\n",
       "line": 1,
       "selection": {
         "start": {
