@@ -97,7 +97,7 @@
     },
     {
       "title": "Congratulations!",
-      "description": "## Congratulations! 🎉🎉🎉\n\nNow Assistant0 has access to the Calculator and Gmail tools. 🎉🎉🎉\n\nIn this lab you:\n\n- Used Auth0 AI SDKs to integrate your agent with Auth0 Token Vault.\n- Integrated tool calling with your agent application.\n- Set up your agent to call Google APIs on behalf of an authenticated user.\n"
+      "description": "## Congratulations! 🎉🎉🎉\n\nNow Assistant0 has access to the Calculator and Gmail tools.\n\nIn this lab you:\n\n- Used Auth0 AI SDKs to integrate your agent with Auth0 Token Vault.\n- Integrated tool calling with your agent application.\n- Set up your agent to call Google APIs on behalf of an authenticated user.\n"
     }
   ]
 }
