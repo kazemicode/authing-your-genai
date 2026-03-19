@@ -16,20 +16,20 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "Add a `tools` variable like this to use the calculator as tool in the chat:\n\n```ts\n\nconst tools = [new Calculator()];\n```",
-      "line": 32,
+      "line": 34,
       "title": "Create a list of tools"
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "You'll also need to update the agent creation to remove the default empty array to this:\n\n```ts\ntools,\n```",
-      "line": 39,
+      "line": 40,
       "selection": {
         "start": {
-          "line": 39,
+          "line": 40,
           "character": 7
         },
         "end": {
-          "line": 39,
+          "line": 40,
           "character": 17
         }
       },

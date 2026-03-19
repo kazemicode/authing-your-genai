@@ -44,7 +44,7 @@
     },
     {
       "title": "WebApp configuration variables",
-      "description": "## Auth0 application values\n\n1. Go to the [Auth0 Dashboard](https://manage.auth0.com/#/applications). And create and configure an Auth0 Application with the following properties:\n\n    - Name: `My Oktane App`\n    - Type: `Regular Web`\n\n2. Then select the **Settings** tab on your **My Oktane App** page."
+      "description": "## Auth0 application values\n\n1. Go to the [Auth0 Dashboard](https://manage.auth0.com/#/applications). And create and configure an Auth0 Application with the following properties:\n\n    - Name: **Assistant0**\n    - Type: **Regular Web**\n\n2. Then select the **Settings** tab on your Assistant0 page."
     },
     {
       "title": "Update WebApp in the Dashboard",
