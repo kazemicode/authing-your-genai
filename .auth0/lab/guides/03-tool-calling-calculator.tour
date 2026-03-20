@@ -22,14 +22,14 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "You'll also need to update the agent creation to remove the default empty array to this:\n\n```ts\ntools,\n```",
-      "line": 40,
+      "line": 41,
       "selection": {
         "start": {
-          "line": 40,
+          "line": 41,
           "character": 7
         },
         "end": {
-          "line": 40,
+          "line": 41,
           "character": 17
         }
       },
