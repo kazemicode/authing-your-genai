@@ -1,7 +1,7 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "4 - Setting up Google",
-  "nextTour": "5 - Tool Calling: GMail",
+  "title": "4: Set up Google project",
+  "nextTour": "5: Add the Gmail tool",
   "description": "# Setting up Google Project for Tool Calling\n\nTo allow your application to",
   "steps": [
     {

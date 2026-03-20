@@ -1,7 +1,7 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "3 - Tool Calling: Calculator",
-  "nextTour": "4 - Setting up Google",
+  "title": "3: Add the Calculator tool",
+  "nextTour": "4: Set up Google project",
   "steps": [
     {
       "title": "The Calculator",

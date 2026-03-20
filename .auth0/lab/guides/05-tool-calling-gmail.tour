@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "5 - Tool Calling: GMail",
+  "title": "5: Add the Gmail tool",
   "nextTour": "6 - Recap",
   "steps": [
     {

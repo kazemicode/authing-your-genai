@@ -1,7 +1,7 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "2 - Integrate Assistant0 with Auth0",
-  "nextTour": "3 - Tool Calling: Calculator",
+  "title": "2: Integrate Assistant0 with Auth0",
+  "nextTour": "3: Add the Calculator tool",
   "steps": [
     {
       "title": "Assistant0",
