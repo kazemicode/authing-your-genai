@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
       llm,
       tools: [],
       // Modify the stock prompt in the prebuilt agent.
-      prompt: AGENT_SYSTEM_TEMPLATE,
+      stateModifier: AGENT_SYSTEM_TEMPLATE,
     });
 
     /**
