@@ -1,7 +1,7 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "1 - Setup",
-  "nextTour": "2 - Running the application",
+  "nextTour": "2 - Integrate Assistant0 with Auth0",
   "steps": [
     {
       "title": "Introduction",

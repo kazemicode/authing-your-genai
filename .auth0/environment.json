@@ -6,7 +6,7 @@
   "postConfigureTour": ".auth0/lab/guides/01-intro.tour",
   "clients": [
     {
-      "name": "Auth0 Assistant",
+      "name": "Assistant0",
       "directory": "auth0-assistant0",
        "env": {
         "OPENAI_API_KEY": "YOUR_API_KEY",
