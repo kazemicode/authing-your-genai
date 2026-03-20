@@ -1,5 +1,5 @@
 {
-    "name": "Dev Lab: Auth-ing your GenAI",
+    "name": "Secure Your AI Agents to Act on the Behalf of Users",
     "image": "mcr.microsoft.com/devcontainers/javascript-node",
     "containerEnv": {
       "ENV": "dev"
