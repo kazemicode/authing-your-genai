@@ -5,7 +5,7 @@
   "steps": [
     {
       "title": "Assistant0",
-      "description": "# About Assistant0\n\nAssistant0 is built in NextJS. This Codespace container already installed all the needed dependencies, includin the [Auth0 NextJS SDK](https://auth0.com/docs/quickstart/webapp/nextjs/01-login#install-the-auth0-next-js-sdk), which is used to implement authentication with Auth0. This part has already been done for you since the focus of this lab is to integrate tools with the agent so that the agent can perform tasks (via the associated first- or third-party APIs) on the authenticated user's behalf. \n\nFor the GenAI portion we are going to use [LangGraph](https://www.langchain.com/langgraph)."
+      "description": "## About Assistant0\n\nAssistant0 is built in NextJS. This Codespace container already installed all the needed dependencies, includin the [Auth0 NextJS SDK](https://auth0.com/docs/quickstart/webapp/nextjs/01-login#install-the-auth0-next-js-sdk), which is used to implement authentication with Auth0. This part has already been done for you since the focus of this lab is to integrate tools with the agent so that the agent can perform tasks (via the associated first- or third-party APIs) on the authenticated user's behalf. \n\nFor the GenAI portion we are going to use [LangGraph](https://www.langchain.com/langgraph)."
     },
     {
       "title": "Understanding the code",
@@ -43,22 +43,16 @@
       }
     },
     {
-      "title": "WebApp configuration variables",
-      "description": "## Auth0 application values\n\n1. Go to the [Auth0 Dashboard](https://manage.auth0.com/#/applications). And create and configure an Auth0 Application with the following properties:\n\n    - Name: **Assistant0**\n    - Type: **Regular Web**\n\n2. Then select the **Settings** tab on your Assistant0 page."
-    },
-    {
-      "title": "Update WebApp in the Dashboard",
-      "file": "auth0-assistant0/.env.local",
-      "description": "## Auth0 application values - WebApp Quickstart Client\n\nNow scroll down to **Application URIs** and add the APP_BASE_URL to the settings like so:\n\n\n * In the **Allowed Callback URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/auth/callback\\\"\"]) and copy the output\n * In the **Allowed Logout URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/\\\"\"]) and copy the output\n\nRemember to select **Save** at the bottom of the page.",
-      "line": 6,
+      "title": "Create an Auth0 application integration",
+      "description": "## Create an Auth0 application integration\n\n1. Go to the [Auth0 Dashboard](https://manage.auth0.com/#/applications). And create and configure an Auth0 Application with the following properties:\n\n    - Name: **Assistant0**\n    - Type: **Regular Web**\n\n2. Then select the **Settings** tab on your Assistant0 page.\n\n3. Scroll down to **Application URIs** and configure the following:\n\n    * In the **Allowed Callback URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/auth/callback\\\"\"]) and copy the output\n    * In the **Allowed Logout URLs**: [Select this link](command:codetour.sendTextToTerminal?[\"echo \\\"https://$CODESPACE_NAME-3000.app.github.dev/\\\"\"]) and copy the output\n\n4. Select **Save** at the bottom of the page.",
       "selection": {
         "start": {
-          "line": 6,
-          "character": 15
+          "line": 1,
+          "character": 4
         },
         "end": {
-          "line": 6,
-          "character": 100
+          "line": 1,
+          "character": 43
         }
       }
     },
