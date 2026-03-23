@@ -1,11 +1,11 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "5: Add the Gmail tool",
+  "title": "4: Add the Gmail tool",
   "nextTour": "6 - Recap",
   "steps": [
     {
-      "title": "GMail",
-      "description": "# Adding the second tool calling feature: GMail\n\nNow for the exciting part! Let's  Actually add the Gmail tool in Assistant0 so it can interact with Gmail. \n\nYou already did most of the hard work: setting up a Google Cloud Project to get API credentials, configuring Auth0 to handle the authentication flow securely with Google. Now is time to update the agent code to use the Gmail tool.\n\nAll of this you've done so the application doesn't handle user Google credentials directly. Instead, Auth0 will manage the OAuth 2.0 flow with Google.",
+      "title": "Integrate the Gmail tool with your app",
+      "description": "# Integrate the Gmail tool with your app\n\nNow for the exciting part! Let's  Actually add the Gmail tool in Assistant0 so it can interact with Gmail. \n\nYou already did most of the hard work: setting up a Google Cloud Project to get API credentials, configuring Auth0 to handle the authentication flow securely with Google. Now is time to update the agent code to use the Gmail tool.\n\nYou have done all this so the application doesn't handle user Google credentials directly. Instead, Auth0 will manage the OAuth 2.0 flow with Google.",
       "type": "markdown"
     },
     {
@@ -14,28 +14,38 @@
     },
     {
       "file": "auth0-assistant0/src/lib/auth0-ai.ts",
-      "description": "## Access Token\n\nFirst, we need to get an access token for the Gmail API. We can get this using the Auth0 Token Vault.\n\nNow you need to do some updates the `auth0-ai.ts` file. Start by adding the new imports:\n\n```ts\nimport { getRefreshToken } from '@/lib/auth0';\nimport { Auth0AI } from '@auth0/ai-langchain';\n\n```\n\nThe first import is gets the function for retrieving refresh tokens. While the second import uses the Auth0 AI LangChain SDK to import a `Auth0AI` a constructor that facilitates using Auth0 with LangChain.",
+      "description": "## Get an Access Token\n\n\nFirst, we need to get an access token for the Gmail API. We can get this using the Auth0 Token Vault.\n\nNow you need to do some updates the `auth0-ai.ts` file. Start by adding the new imports:\n\n```ts\nimport { getRefreshToken } from '@/lib/auth0';\nimport { Auth0AI } from '@auth0/ai-langchain';\n\n```\n\nThe first import is gets the function for retrieving refresh tokens. While the second import uses the Auth0 AI LangChain SDK to import a `Auth0AI` a constructor that facilitates using Auth0 with LangChain.",
       "line": 2
     },
     {
       "file": "auth0-assistant0/src/lib/auth0-ai.ts",
-      "description": "## Google Connection\n\nNow iniatialize the `auth0AI` and then create the connection with Google.\n```ts\nconst auth0AI = new Auth0AI();\n\n// Connection for Google services\nexport const withGoogleConnection = auth0AI.withTokenVault({\n  connection: 'google-oauth2',\n  scopes: ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose'],\n  refreshToken: getRefreshToken,\n});\n```\n\nHere we pass the scopes and the type of connection.\n\nKeep in mind that you'll need to \"login/sign up with Google\" on Assistant0 in order to leverage this feature.",
+      "description": "## Initialize the Auth0 AI client and Google Connection for Token Vault\n\n\nNow iniatialize the `auth0AI` and then create the connection with Google.\n```ts\nconst auth0AI = new Auth0AI();\n\n// Connection for Google services\nexport const withGoogleConnection = auth0AI.withTokenVault({\n  connection: 'google-oauth2',\n  scopes: ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose'],\n  refreshToken: getRefreshToken,\n});\n```\n\nHere we pass the scopes and the type of connection.\n\nKeep in mind that you'll need to \"login/sign up with Google\" on Assistant0 in order to leverage this feature.",
       "line": 7,
       "selection": {
         "start": {
-          "line": 7,
-          "character": 1
+          "line": 1,
+          "character": 4
         },
         "end": {
-          "line": 7,
-          "character": 29
+          "line": 1,
+          "character": 72
         }
       }
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
-      "description": "## Look for emails\n\nIn order to read your emails in the Assistant0 chat you'll also need to update the agent code. So open `src/app/api/chat/routes.ts` next to update the tool calling portion\n\nFirst start with the imports:\n\n```ts\nimport { GmailSearch } from '@langchain/community/tools/gmail';\nimport { withGoogleConnection, getAccessToken } from '@/lib/auth0-ai';\n\n```\n\nThe `GmailSearch` is used to do the actual look up in your inbox.",
-      "line": 8
+      "description": "## Import Gmail tool and Auth0 AI functionality \n\n*The agent code is implemented in the `src/api/chat/route.ts`, which has been opened for you.*\n\nIn order to implement the Gmail tool calling, we'll need to import the GmailSearch tool as well as the methods we implemented in `auth0-ai.js` that allows us to retrieve the Google access token from Token Vailt.\n\nFirst start with the imports:\n\n```ts\nimport { GmailSearch } from '@langchain/community/tools/gmail';\nimport { withGoogleConnection, getAccessToken } from '@/lib/auth0-ai';\n\n```\n\nThe `GmailSearch` is used to do the actual look up in your inbox.",
+      "line": 7,
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 4
+        },
+        "end": {
+          "line": 2,
+          "character": 1
+        }
+      }
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",

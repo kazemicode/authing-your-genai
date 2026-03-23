@@ -1,12 +1,12 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "4: Set up Google project",
-  "nextTour": "5: Add the Gmail tool",
+  "title": "3: Set up a Google project",
+  "nextTour": "4: Add the Gmail tool",
   "description": "# Setting up Google Project for Tool Calling\n\nTo allow your application to",
   "steps": [
     {
       "title": "Creating a Google Project",
-      "description": "# Setting up a Google for tool calling\n\nTo allow your application to interact with Google services like Gmail, we need to register it with Google and get API credentials. For this you'll need:\n* A Google Developer Account\n* The Gmail API enabled\n* A Google project\n* A configured OAuth consent screen\n\nLet's go throught each of the steps."
+      "description": "# Set up a Google for tool calling\n\nTo allow your application to interact with Google services like Gmail, we need to register it with Google and get API credentials. For this you'll need:\n\n* A Google Developer Account\n* The Gmail API enabled\n* A Google project\n* A configured OAuth consent screen\n\nLet's go throught each of the steps."
     },
     {
       "title": "Google Developer Account",
