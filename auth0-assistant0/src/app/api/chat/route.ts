@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         apiKey: process.env.GOOGLE_API_KEY,
         maxRetries: 2
     });
-
+    const tools = [];
     /**
      * Use a prebuilt LangGraph agent.
      */

@@ -49,15 +49,15 @@
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
-      "description": "Let's add a `gmailParams` which will pass the access token as credentials to our tool like this:\n\n```ts\n\nconst gmailParams = {\n    credentials: {\n    accessToken: getAccessToken,\n    },\n};\n\n```",
+      "description": "## Pass access token to the tool\n\nLet's add a `gmailParams` which will pass the access token as credentials to our tool like this:\n\n```ts\n\nconst gmailParams = {\n    credentials: {\n    accessToken: getAccessToken,\n    },\n};\n\n```",
       "line": 34,
-      "title": "gmailParams"
+      "title": "Pass access token to the tool"
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
-      "description": "And update the list of tools like this:\n\n```ts\nconst tools = [\n    new Calculator(),\n    withGoogleConnection(new GmailSearch(gmailParams)),\n];\n```\n\nNow test it!",
+      "description": "And update the list of tools like this:\n\n```ts\nconst tools = [\n    withGoogleConnection(new GmailSearch(gmailParams)),\n];\n```\n\nNow test it!",
       "line": 41,
-      "title": "Gmail in the tools list",
+      "title": "Update the list of tools",
       "selection": {
         "start": {
           "line": 41,
