@@ -1,7 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "4: Add the Gmail tool",
-  "nextTour": "6 - Recap",
   "steps": [
     {
       "title": "Integrate the Gmail tool with your app",
@@ -23,11 +22,11 @@
       "line": 7,
       "selection": {
         "start": {
-          "line": 1,
+          "line": 7,
           "character": 4
         },
         "end": {
-          "line": 1,
+          "line": 7,
           "character": 72
         }
       }
