@@ -5,7 +5,7 @@
   "steps": [
     {
       "title": "Introduction",
-      "description": "## Introduction \n\nIn this lab, you will set up an NextJS+LangGraph AI assistant named Assistant0 that uses multiple tools to help you with everyday tasks. Tools add to your AI agent's capabilities by exptending its pretrained knowledge by connecting to first- or third-party APIs to perform actions on behalf of the authenticated user. \nFor example, a tool with Gmail and Google Calendar integration can help you speedily draft emails and schedule meetings.\n\nWe are going to add two tools to our AI assistant:\n\n1. **Calculator**: So our assistant can learn how to do calculations; and\n1. **Gmail Integration**: Assistant0 will be able to draft emails on your behalf."
+      "description": "## Introduction \n\nIn this lab, you will set up an NextJS+LangGraph AI assistant named Assistant0 that uses multiple tools to help you with everyday tasks. Tools add to your AI agent's capabilities by exptending its pretrained knowledge by connecting to first- or third-party APIs to perform actions on behalf of the authenticated user. \nFor example, a tool with Gmail and Google Calendar integration can help you speedily draft emails and schedule meetings.\n\nWe are going to add a tool to our AI assistant:\n\n1. **Gmail Integration**: Assistant0 will be able to search and draft emails on your behalf."
     },
     {
       "title": "Prerequisites",
