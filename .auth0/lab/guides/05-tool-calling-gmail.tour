@@ -50,7 +50,7 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## Pass access token to the tool\n\nLet's add a `gmailParams` which will pass the access token as credentials to our tool like this:\n\n```ts\n\nconst gmailParams = {\n    credentials: {\n    accessToken: getAccessToken,\n    },\n};\n\n```",
-      "line": 34,
+      "line": 35,
       "title": "Pass access token to the tool"
     },
     {
