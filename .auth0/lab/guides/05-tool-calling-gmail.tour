@@ -83,14 +83,14 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## GmailCreateDraft\n\nFirst update the list of imports:\n\n```ts\nimport { GmailSearch, GmailCreateDraft } from '@langchain/community/tools/gmail';\n```\n\nThe `GmailCreateDraft` is used to draft emails for you.\n",
-      "line": 9,
+      "line": 7,
       "selection": {
         "start": {
-          "line": 9,
+          "line": 7,
           "character": 1
         },
         "end": {
-          "line": 9,
+          "line": 7,
           "character": 67
         }
       }
