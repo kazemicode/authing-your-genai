@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
      */
     const agent = createReactAgent({
       llm,
-      tools: [],
+      tools,
       // Modify the stock prompt in the prebuilt agent.
       stateModifier: AGENT_SYSTEM_TEMPLATE,
     });
