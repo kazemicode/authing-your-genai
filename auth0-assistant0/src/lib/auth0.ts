@@ -1,11 +1,9 @@
 import { Auth0Client } from '@auth0/nextjs-auth0/server';
 
+// Create an Auth0 Client.
 export const auth0 = new Auth0Client({
-  // this is required to get federated access tokens from services like Google
-  authorizationParameters: {
-    access_type: 'offline',
-    prompt: 'consent',
-  },
+  // Mounts /auth/connect endpoint
+  enableConnectAccountEndpoint: true
 });
 
 // Get the refresh token from Auth0 session

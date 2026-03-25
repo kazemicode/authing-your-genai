@@ -1,7 +1,8 @@
 import { LogIn, UserPlus } from 'lucide-react';
-import { ChatWindow } from '@/components/ChatWindow';
+import { ChatWindow } from '@/components/chat-window';
 import { GuideInfoBox } from '@/components/guide/GuideInfoBox';
 import { Button } from '@/components/ui/button';
+
 import { auth0 } from '@/lib/auth0';
 
 export default async function Home() {
@@ -35,15 +36,7 @@ export default async function Home() {
         <li className="text-l">
           🤝
           <span className="ml-2">
-            This template showcases a simple chatbot using{' '}
-            <a className="text-blue-500" href="https://langchain-ai.github.io/langgraphjs/" target="_blank">
-              LangGraph.js
-            </a>
-            ,{' '}
-            <a className="text-blue-500" href="https://js.langchain.com/docs/introduction/" target="_blank">
-              LangChain.js
-            </a>{' '}
-            and the Vercel{' '}
+            This template showcases a simple chatbot using Vercel&apos;s{' '}
             <a className="text-blue-500" href="https://sdk.vercel.ai/docs" target="_blank">
               AI SDK
             </a>{' '}
