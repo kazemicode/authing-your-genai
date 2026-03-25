@@ -1,14 +1,25 @@
-import { Auth0AI, getAccessTokenFromTokenVault } from '@auth0/ai-vercel';
-import { getRefreshToken } from './auth0';
+import { SUBJECT_TOKEN_TYPES } from '@auth0/ai';
+import { Auth0AI } from '@auth0/ai-langchain';
 
-// Get the access token for a connection via Auth0
-export const getAccessToken = async () => getAccessTokenFromTokenVault();
-
-const auth0AI = new Auth0AI();
-
-// Connection for Google services
-export const withGoogleConnection = auth0AI.withTokenVault({
-  connection: 'google-oauth2',
-  scopes: ['openid', 'https://www.googleapis.com/auth/calendar.events'],
-  refreshToken: getRefreshToken,
+const auth0AI = new Auth0AI({
+  auth0: {
+    domain: process.env.AUTH0_DOMAIN!,
+    clientId: process.env.AUTH0_CUSTOM_API_CLIENT_ID!,
+    clientSecret: process.env.AUTH0_CUSTOM_API_CLIENT_SECRET!,
+  },
 });
+
+const withAccessTokenForConnection = (connection: string, scopes: string[]) =>
+  auth0AI.withTokenVault({
+    connection,
+    scopes,
+    accessToken: async (_, config) => {
+      return config.configurable?.langgraph_auth_user?.getRawAccessToken();
+    },
+    subjectTokenType: SUBJECT_TOKEN_TYPES.SUBJECT_TYPE_ACCESS_TOKEN,
+  });
+
+export const withGmailSearch = withAccessTokenForConnection(
+  'google-oauth2',
+  ['openid', 'https://www.googleapis.com/auth/gmail.readonly'],
+);
