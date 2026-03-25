@@ -8,7 +8,7 @@ import {
 import { NextRequest } from 'next/server';
 
 import { getCalendarEventsTool } from '@/lib/tools/google-calendar';
-import { openai } from '@ai-sdk/openai';
+import { google } from '@ai-sdk/google';
 import { setAIContext } from '@auth0/ai-vercel';
 import { errorSerializer, withInterruptions } from '@auth0/ai-vercel/interrupts';
 
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     execute: withInterruptions(
       async ({ writer }) => {
         const result = streamText({
-          model: openai('gpt-4o-mini'),
+          model: google('gemini-2.0-flash'),
           system: AGENT_SYSTEM_TEMPLATE,
           messages: modelMessages,
           tools,

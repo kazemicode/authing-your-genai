@@ -47,10 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   <Image src="/images/auth0-logo.svg" alt="Auth0 AI Logo" className="h-8" width={143} height={32} />
                 </a>
                 <span className={`${robotoMono.className} text-white text-2xl`}>Assistant0</span>
-                <nav className="flex gap-1 flex-col md:flex-row">
-                  <ActiveLink href="/">Chat</ActiveLink>
-                  <ActiveLink href="/documents">Documents</ActiveLink>
-                </nav>
+            
               </div>
               <div className="flex justify-center">
                 {session && (
