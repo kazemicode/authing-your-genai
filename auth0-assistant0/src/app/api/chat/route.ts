@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     execute: withInterruptions(
       async ({ writer }) => {
         const result = streamText({
-          model: google('gemini-2.0-flash'),
+          model: google('gemini-2.5-flash'),
           system: AGENT_SYSTEM_TEMPLATE,
           messages: modelMessages,
           tools,
