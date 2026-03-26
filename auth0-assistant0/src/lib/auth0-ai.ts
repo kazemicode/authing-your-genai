@@ -2,7 +2,12 @@ import { Auth0AI, getAccessTokenFromTokenVault } from '@auth0/ai-vercel';
 import { getRefreshToken } from './auth0';
 
 // Get the access token for a connection via Auth0
-export const getAccessToken = async () => getAccessTokenFromTokenVault();
+export const getAccessToken = async () => {
+  console.log('🔑 Requesting Gmail access token...');
+  const token = await getAccessTokenFromTokenVault();
+  console.log('🔑 Gmail access token obtained:', token ? 'Yes' : 'No');
+  return token;
+};
 
 const auth0AI = new Auth0AI();
 

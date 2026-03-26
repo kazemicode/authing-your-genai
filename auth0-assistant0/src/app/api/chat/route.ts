@@ -22,12 +22,16 @@ const AGENT_SYSTEM_TEMPLATE = `You are a personal assistant named Assistant0 wit
 export async function POST(req: NextRequest) {
   const { id, messages }: { id: string; messages: Array<UIMessage> } = await req.json();
 
+  console.log('💬 Chat request received:', { id, messageCount: messages.length });
+
   setAIContext({ threadID: id });
 
   const tools = {
     gmailSearchTool,
     gmailDraftTool,
   };
+
+  console.log('🛠️ Tools available:', Object.keys(tools));
 
   const modelMessages = await convertToModelMessages(messages);
 
@@ -43,10 +47,13 @@ export async function POST(req: NextRequest) {
           tools,
 
           onFinish: (output) => {
+            console.log('🤖 AI response finished with reason:', output.finishReason);
             if (output.finishReason === 'tool-calls') {
+              console.log('🔧 Tool calls detected:', output.content);
               const lastMessage = output.content[output.content.length - 1];
               if (lastMessage?.type === 'tool-error') {
                 const { toolName, toolCallId, error, input } = lastMessage;
+                console.error('❌ Tool error:', { toolName, toolCallId, error, input });
                 const serializableError = {
                   cause: error,
                   toolCallId: toolCallId,

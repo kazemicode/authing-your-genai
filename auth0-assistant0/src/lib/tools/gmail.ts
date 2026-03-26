@@ -23,8 +23,15 @@ export const gmailSearchTool = withGmailRead(
       resource: z.enum(['messages', 'threads']).optional(),
     }),
     execute: async (args) => {
-      const result = await gmailSearch._call(args);
-      return result;
+      console.log('🔍 Gmail Search Tool called with args:', args);
+      try {
+        const result = await gmailSearch._call(args);
+        console.log('🔍 Gmail Search Tool result:', result);
+        return result;
+      } catch (error) {
+        console.error('🔍 Gmail Search Tool error:', error);
+        throw error;
+      }
     },
   }),
 );
@@ -42,8 +49,15 @@ export const gmailDraftTool = withGmailWrite(
       bcc: z.array(z.string()).optional(),
     }),
     execute: async (args) => {
-      const result = await gmailDraft._call(args);
-      return result;
+      console.log('📧 Gmail Draft Tool called with args:', args);
+      try {
+        const result = await gmailDraft._call(args);
+        console.log('📧 Gmail Draft Tool result:', result);
+        return result;
+      } catch (error) {
+        console.error('📧 Gmail Draft Tool error:', error);
+        throw error;
+      }
     },
   }),
 );
