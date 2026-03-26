@@ -32,7 +32,7 @@
     },
     {
       "title": "Google connection and application ready for Token Vault",
-      "description": "## Google connection and application ready for Token Vault\n\nNow your Google connection and application are ready to use Token Vault to request and store third-party access tokens to take actions on behalf of the authenticated user!\n\nNext you will integrate Gmail tooling to the Assistant0 application and test it out."
+      "description": ""
     }
   ]
 }
