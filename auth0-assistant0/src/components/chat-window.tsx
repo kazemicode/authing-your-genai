@@ -138,20 +138,20 @@ export function ChatWindow(props: {
         className="absolute inset-0"
         contentClassName="py-8 px-2"
         content={
-          messages.length === 0 ? (
-            <div>{props.emptyStateComponent}</div>
-          ) : (
-            <>
+          <>
+            <div className="flex flex-col max-w-[768px] mx-auto pb-4 w-full">
+              <TokenVaultInterruptHandler interrupt={toolInterrupt} />
+            </div>
+            {messages.length === 0 ? (
+              <div>{props.emptyStateComponent}</div>
+            ) : (
               <ChatMessages
                 aiEmoji={props.emoji}
                 messages={messages}
                 emptyStateComponent={props.emptyStateComponent}
               />
-              <div className="flex flex-col max-w-[768px] mx-auto pb-12 w-full">
-                <TokenVaultInterruptHandler interrupt={toolInterrupt} />
-              </div>
-            </>
-          )
+            )}
+          </>
         }
         footer={
           <div className="sticky bottom-8 px-2">
