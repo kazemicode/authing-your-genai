@@ -1,50 +1,38 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "3: Set up a Google project",
-  "nextTour": "4: Add the Gmail tool",
+  "title": "4: Configure your Google connection in Auth0",
+  "nextTour": "5: Add the Gmail tool",
   "description": "# Setting up Google Project for Tool Calling\n\nTo allow your application to",
   "steps": [
     {
-      "title": "Creating a Google Project",
-      "description": "# Set up a Google for tool calling\n\nTo allow your application to interact with Google services like Gmail, we need to register it with Google and get API credentials. \nYou've already created your Google Cloud developer account and created a Google project.\n\nNow we'll:\n\n- Enable the Gmail API on your Google Project\n- Configure the Google consent screen\n- Create a Google OAuth client"
-    },
-    {
-      "title": "Enable Gmail API",
-      "description": "## Enable the Gmail API on your project\n\nSince we want our Assistant to perform email actions, we need to give it \"email powers\". To do this we need the Gmail API.\n\n1. Log in to your Google Cloud console: https://console.developers.google.com/.\n2. Go to the Gmail API: https://console.cloud.google.com/apis/library/gmail.googleapis.com\n2. Make sure your **Auth0 labs** project is selected.\n4. Select **Enable** to enable the Gmail API on your project."
-    },
-    {
-      "title": "Get started with Google Auth Platform",
-      "description": "## Get started with Google Auth Platform \n\n>If you already use the Google Auth platform and already have an app configured you can skip this step.\n\nThe Google Auth Platform is where you manage your apps and OAuth credentials for calling Google APIs. To create a new app:\n\n1. Go to the Google Auth Platform: https://console.cloud.google.com/auth/overview.\n2. Select **Get Started**\n3. Add the App information:\n    * **App Name**: Assistant0\n    * **User support email**: choose your preferred email\n    * Then select **Next**\n4. Select **Audience**\n    * Choose **External**\n    * Then select **Next**\n5. In **Contact information**:\n    * Add your email address\n6. Then in **Finish** accept the terms and select **Continue**.\n7. Finally select **Create**."
-    },
-    {
-      "title": "Configure Google OAuth consent screen",
-      "description": "## Configure Google OAuth consent screen\n\nWhen you use OAuth 2.0 for authorization, your application requests authorization for one or more scopes of access from a Google Account. Google displays a consent screen to the user, including a summary of your project, its policies, and the requested access scopes.\n\nBefore creating an OAuth client ID, you must first configure the OAuth consent screen with information about your application.\n\n## Configure OAuth consent screen\n\n1. **Configure Authorized domains:** \n    1. Go to **[Google Auth Platform > Branding](https://console.cloud.google.com/auth/branding)**\n    2. Under **Authorized domains**, select **+ Add domain**\n    3. Add in `auth0.com`. (If you’re using a custom domain in Auth0, enter your custom domain instead).\n    4. Add in also `github.dev` since we are using GitHub Codespaces to serve our application.\n    5. Select **Save** at the bottom.\n\n2. **Configure test users:**\n    1. Navigate to Google **[Auth Platform > Audience](https://console.cloud.google.com/auth/audience)**.\n    2. In Test Users, add the Gmail address that you used to sign up for the Assistant0 app in Auth0.\n\n3. **Configure Data Access:** \n    1. Go to Google **[Auth Platform > Data Access](https://console.cloud.google.com/auth/audience)**\n    2. Select **Add or remove scopes**\n    3. Search for `gmail` on the banner and select the following two from the list:\n        1. `.../auth/gmail.readonly` - to read emails\n        2. `.../auth/gmail.compose` - to draft and send emails\n\n4. Navigate to the bottom and select **Update**.\n\n5. Select **Save** at the end.\n\n> (These steps are adapted from: https://developers.google.com/workspace/guides/configure-oauth-consent)"
-    },
-    {
-      "title": "Create Google OAuth client",
-      "description": "## Create  Google OAuth client\n\nNow we'll create the OAuth2.0 client in Google Cloud Console: https://console.cloud.google.com\n\n1. Go to **[Google Auth Platform > Clients](https://console.cloud.google.com/auth/clients)**.\n    1. Select **+ Create Client**. You may need to enlarge your browser window to see this button.\n    2. In Application type: Select **Web application**.\n    3. Name:  **Assistant0 Web Client**.\n    4. Go to **[Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/)**\n        1. Select **Assistant0** you created\n        2. Navigate to the **Settings** tab\n        3. And copy the **Domain**\n    4. **Authorized JavaScript origins**: Add your **Auth0 Domain** you just copied, remember to add the `https://` in the beginning\n    5. **Authorized redirect URIs**: Add your **Auth0 Callback URL** - `https://<YOUR_AUTH0_DOMAIN>/login/callback`. You should have something like this:\n    \n    ![](https://raw.githubusercontent.com/jtemporal/authing-your-genai/refs/heads/oktane/.tours/images/03-8-google-oauth-client-creation.png)\n    6. Select **Create**.\n\nYou'll now see your **Client ID** and **Client Secret**. Copy these and make sure not to lose them or share them. You'll need them to configure the Google social connection in Auth0.\n\n![](https://raw.githubusercontent.com/jtemporal/authing-your-genai/refs/heads/oktane/.tours/images/03-9-client-creation-client-id-client-secret.png)\n\nWith these steps, your Google Cloud Project is ready, and you have the **Client ID** and **Secret**. Next, we'll configure Auth0.",
+      "title": "Add Google OAuth 2.0 client credentials to your Google connection",
+      "description": "## Add Google OAuth 2.0 client credentials to your Google connection\n\nLet's configure your Google connection in Auth0 with the Google OAuth 2.0 client credentials you just created. \n\n1. From the Auth0 Dashboard, go to [Authentication > Social](https://manage.auth0.com/#/connections/social).\n3. Select on the **google-oauth2** in the list of social connections.\n> By default, this connection is configured with Auth0 dev keys. But now we'll update them with the ones you just created.\n4. In the General section, enter the client credentials from the Google OAuth 2.0 client you just created (if you navigated away, you can find this here: https://console.cloud.google.com/auth/clients).\n    * **Client ID**: Paste the Client ID from your Assistant0 Web Client on the Google Cloud Console.\n    * **Client Secret**: Paste the Client Secret from your Assistant0 Web Client on the Google Cloud Console.\n\n> ⚠️ Note: Make sure that your Client ID and Client Secret **do not have** any leading or trailing blank spaces when you paste them into the Google connection configuration.",
       "selection": {
         "start": {
-          "line": 23,
-          "character": 92
+          "line": 1,
+          "character": 4
         },
         "end": {
-          "line": 23,
-          "character": 98
+          "line": 1,
+          "character": 69
         }
       }
     },
     {
-      "title": "Configure Google Social Connection in Auth0",
-      "description": "## Configure Google Social Connection in Auth0\n\nNow, let's tell Auth0 how to use the Google credentials you just created. By default Auth0 uses development keys for the Google Social Connection, so now that you have a \"real\" one, is time to update that.\n\n1. Go back to the [Auth0 Dashboard](https://manage.auth0.com).\n2. Navigate to [Authentication > Social](https://manage.auth0.com/#/connections/social).\n3. Select on the **google-oauth2** in the list of social connections.\n4. Add the information you have from the Google OAuth Client:\n    * **Client ID**: Paste the Client ID from your Google Cloud Project.\n    * **Client Secret**: Paste the Client Secret from your Google Cloud Project.\n\n⚠️ _Tip:_ If you get an \"Access Blocked\" make sure that your Client ID and Client Secret **do not have** any leading or trailing blank spaces."
+      "title": "Enable Connected Accounts for Token Vault and select permissions",
+      "description": "## Enable Connected Accounts for Token Vault and select permissions\n\nIn order for this connection to retrieve and securely store access tokens for the external Gmail API, we need to enable Connected Accounts for Token Vault. We will also need to select which permissions the client application will be allowed to request when requesting an access token from Google.\n\n1. Still on the google-oauth2 connection page, scroll down to the Purpose section.\n2. Select **Authentication and Connected Accounts for Token Vault**.\n\n3. Scroll to the **Permissions** section and:\n    - From the Access Type section, select **Offline Access**.\n    - From the Gmail section, select: **Gmail.Readonly** and **Gmail.Compose**.\n\n4. Scroll down and select **Save Changes**."
     },
     {
-      "title": "Configure Google Social Connection in Auth0 -  cont",
-      "description": "## Configure Google Social Connection in Auth0\n\n5. In the **Permissions** section find the block corresponding to Gmail and select:\n    1. `Gmail.readonly`\n    2. `Gmail.compose`\n"
+      "title": "Enable My Accounts API",
+      "description": "## Enable My Account API\n\nThe [Connected Accounts](https://auth0.com/docs/secure/call-apis-on-users-behalf/token-vault/connected-accounts-for-token-vault) flow uses the [My Account API](https://auth0.com/docs/manage-users/my-account-api), which is currently early access, so we will have to manually enable it on the tenant.\n\n1. From the Auth0 Dashboard, got to **Applications > APIs**.\n2. From the My Account API banner, select **Activate**."
     },
     {
-      "title": "Configure Google Social Connection in Auth0 - cont",
-      "description": "6. Navigate to the **Advanced** section:\n    1. Ensure **Token Vault** is _enabled_ - using Auth0's Token Vault feature to allow your backend to call Google APIs on behalf of the user. This is key for our use case with Auth0 for GenAI.\n7. Select **Save Changes**.\n\nOne last thing to do before you can start adding code to use the Gmail API within Assistant0.\n\n1. After enabling the Token Vault, go back to **Applications > Applications**:\n    1. Select your **Assistant0** and in the Settings tab navigate to the bottom to the **Advanced Settings**\n    2. Change to the **Grant Types** tab and select the **Token Vault** grant\n\n"
+      "title": "Add the Token Vault grant to the Assistant0 configuration",
+      "description": "## Add the Token Vault grant to the Assistant0 configuration\n\nNow that the Google connection is configured for Token Vault, you'll need to enable the Token Vault grant type on your Assistant0 application configuration.\n\n1. From the Auth0 dashboard, go to **Applications > Applications** and select **Assisstant0**.\n2. Scroll down and select **Advanced Settings**.\n3. Select **Grant Types**.\n4. Select **Token Vault**.\n5. Select **Save**."
+    },
+    {
+      "title": "Google connection and application ready for Token Vault",
+      "description": "## Google connection and application ready for Token Vault\n\nNow your Google connection and application are ready to use Token Vault to request and store third-party access tokens to take actions on behalf of the authenticated user!\n\nNext you will integrate Gmail tooling to the Assistant0 application and test it out."
     }
   ]
 }
