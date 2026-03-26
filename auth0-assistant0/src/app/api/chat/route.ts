@@ -1,0 +1,80 @@
+import {
+  convertToModelMessages,
+  createUIMessageStream,
+  createUIMessageStreamResponse,
+  streamText,
+  UIMessage,
+} from 'ai';
+import { NextRequest } from 'next/server';
+
+import { gmailDraftTool, gmailSearchTool } from '@/lib/tools/gmail';
+import { openai } from '@ai-sdk/openai';
+import { setAIContext } from '@auth0/ai-vercel';
+import { errorSerializer, withInterruptions } from '@auth0/ai-vercel/interrupts';
+
+const date = new Date().toISOString();
+
+const AGENT_SYSTEM_TEMPLATE = `You are a personal assistant named Assistant0 with access to Gmail. You can search emails using the gmailSearchTool and compose emails using the gmailDraftTool. When users ask about emails, always use these tools. For example, if they ask to search emails, use gmailSearchTool with appropriate query parameters. If they want to send an email, use gmailDraftTool with the message details. You have full access to Gmail functionality. The current date and time is ${date}`;
+
+/**
+ * This handler initializes and calls an tool calling agent.
+ */
+export async function POST(req: NextRequest) {
+  const { id, messages }: { id: string; messages: Array<UIMessage> } = await req.json();
+
+  setAIContext({ threadID: id });
+
+  const tools = {
+    gmailSearchTool,
+    gmailDraftTool,
+  };
+
+  const modelMessages = await convertToModelMessages(messages);
+
+ 
+  const stream = createUIMessageStream({
+    originalMessages: messages,
+    execute: withInterruptions(
+      async ({ writer }) => {
+        const result = streamText({
+          model: openai('gpt-4o'),
+          system: AGENT_SYSTEM_TEMPLATE,
+          messages: modelMessages,
+          tools,
+
+          onFinish: (output) => {
+            if (output.finishReason === 'tool-calls') {
+              const lastMessage = output.content[output.content.length - 1];
+              if (lastMessage?.type === 'tool-error') {
+                const { toolName, toolCallId, error, input } = lastMessage;
+                const serializableError = {
+                  cause: error,
+                  toolCallId: toolCallId,
+                  toolName: toolName,
+                  toolArgs: input,
+                };
+
+                throw serializableError;
+              }
+            }
+          },
+        });
+        writer.merge(
+          result.toUIMessageStream({
+            sendReasoning: true,
+          }),
+        );
+      },
+      {
+        messages: messages,
+        tools,
+      },
+    ),
+    onError: errorSerializer((err) => {
+      console.error('ai-sdk route: stream error', err);
+      return 'Oops, an error occured!';
+    }),
+  });
+
+  return createUIMessageStreamResponse({ stream });
+}

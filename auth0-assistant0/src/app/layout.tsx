@@ -7,14 +7,14 @@ import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { ActiveLink } from '@/components/navbar';
 import { Button } from '@/components/ui/button';
 import { Toaster } from '@/components/ui/sonner';
-import UserButton from '@/components/auth0/user-button';
 import { auth0 } from '@/lib/auth0';
+import UserButton from '@/components/auth0/user-button';
 
 const robotoMono = Roboto_Mono({ weight: '400', subsets: ['latin'] });
 const publicSans = Inter({ weight: '400', subsets: ['latin'] });
 
-const TITLE = 'Auth0 Assistant0: An Auth0 + LangChain + Next.js Template';
-const DESCRIPTION = 'Starter template showing how to use Auth0 in LangChain + Next.js projects.';
+const TITLE = 'Auth0 Assistant0: Gmail AI Assistant with Auth0 Token Vault';
+const DESCRIPTION = 'AI assistant that can read and compose Gmail messages using Auth0 Token Vault for secure API access.';
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await auth0.getSession();
@@ -49,7 +49,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <span className={`${robotoMono.className} text-white text-2xl`}>Assistant0</span>
                 <nav className="flex gap-1 flex-col md:flex-row">
                   <ActiveLink href="/">Chat</ActiveLink>
-                  <ActiveLink href="/documents">Documents</ActiveLink>
                 </nav>
               </div>
               <div className="flex justify-center">

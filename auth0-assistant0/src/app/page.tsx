@@ -2,6 +2,7 @@ import { LogIn, UserPlus } from 'lucide-react';
 import { ChatWindow } from '@/components/chat-window';
 import { GuideInfoBox } from '@/components/guide/GuideInfoBox';
 import { Button } from '@/components/ui/button';
+
 import { auth0 } from '@/lib/auth0';
 
 export default async function Home() {
@@ -35,9 +36,9 @@ export default async function Home() {
         <li className="text-l">
           🤝
           <span className="ml-2">
-            This template showcases a simple chatbot using{' '}
-            <a className="text-blue-500" href="https://langchain-ai.github.io/langgraphjs/" target="_blank">
-              LangGraph.js
+            This template showcases a simple chatbot using Vercel&apos;s{' '}
+            <a className="text-blue-500" href="https://sdk.vercel.ai/docs" target="_blank">
+              AI SDK
             </a>{' '}
             in a{' '}
             <a className="text-blue-500" href="https://nextjs.org/" target="_blank">
@@ -70,7 +71,7 @@ export default async function Home() {
 
   return (
     <ChatWindow
-      endpoint={`${process.env.APP_BASE_URL}/api/chat`}
+      endpoint="api/chat"
       emoji="🤖"
       placeholder={`Hello ${session?.user?.name}, I'm your personal assistant. How can I help you today?`}
       emptyStateComponent={InfoCard}

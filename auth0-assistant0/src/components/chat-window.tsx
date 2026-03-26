@@ -1,21 +1,21 @@
 'use client';
 
-import { useState } from 'react';
-import type { FormEvent, ReactNode } from 'react';
+import { DefaultChatTransport, generateId, lastAssistantMessageIsCompleteWithToolCalls, type UIMessage } from 'ai';
+import { useChat } from '@ai-sdk/react';
+import { useState, type FormEvent, type ReactNode } from 'react';
 import { toast } from 'sonner';
 import { StickToBottom, useStickToBottomContext } from 'use-stick-to-bottom';
 import { ArrowDown, ArrowUpIcon, LoaderCircle } from 'lucide-react';
-import { useQueryState } from 'nuqs';
-import { useStream } from '@langchain/langgraph-sdk/react';
-import { type Message } from '@langchain/langgraph-sdk';
+
+import { useInterruptions } from '@auth0/ai-vercel/react';
+import { TokenVaultInterruptHandler } from '@/components/TokenVaultInterruptHandler';
 
 import { ChatMessageBubble } from '@/components/chat-message-bubble';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
-import { TokenVaultInterruptHandler } from '@/components/TokenVaultInterruptHandler';
 
 function ChatMessages(props: {
-  messages: Message[];
+  messages: UIMessage[];
   emptyStateComponent: ReactNode;
   aiEmoji?: string;
   className?: string;
@@ -65,7 +65,6 @@ function ChatInput(props: {
           placeholder={props.placeholder}
           onChange={props.onChange}
           className="border-none outline-none bg-transparent p-4"
-          autoFocus
         />
 
         <div className="flex justify-between ml-4 mr-2 mb-2">
@@ -114,36 +113,23 @@ export function ChatWindow(props: {
   placeholder?: string;
   emoji?: string;
 }) {
-  const [threadId, setThreadId] = useQueryState('threadId');
-  const [input, setInput] = useState('');
-  const chat = useStream({
-    apiUrl: props.endpoint,
-    assistantId: 'agent',
-    threadId,
-
-    onThreadId: setThreadId,
-    onError: (e: any) => {
-      console.error('Error: ', e);
-      toast.error(`Error while processing your request`, { description: e.message });
-    },
-  });
+  const [input, setInput] = useState("");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { messages, sendMessage, toolInterrupt, status } = useInterruptions((handler) =>
+    useChat({
+      transport: new DefaultChatTransport({ api: props.endpoint }),
+      experimental_throttle: 100,
+      generateId,
+      onError: handler((e: Error) => {
+        console.error('Error: ', e);
+        toast.error(`Error while processing your request`, { description: e.message });
+      }),
+      sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
+    })
+  );
 
   function isChatLoading(): boolean {
-    return chat.isLoading;
-  }
-
-  async function sendMessage(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (isChatLoading()) return;
-    chat.submit(
-      { messages: [{ type: 'human', content: input }] },
-      {
-        optimisticValues: (prev) => ({
-          messages: [...((prev?.messages as []) ?? []), { type: 'human', content: input, id: 'temp' }],
-        }),
-      },
-    );
-    setInput('');
+    return status === 'streaming';
   }
 
   return (
@@ -152,17 +138,17 @@ export function ChatWindow(props: {
         className="absolute inset-0"
         contentClassName="py-8 px-2"
         content={
-          chat.messages.length === 0 ? (
+          messages.length === 0 ? (
             <div>{props.emptyStateComponent}</div>
           ) : (
             <>
               <ChatMessages
                 aiEmoji={props.emoji}
-                messages={chat.messages}
+                messages={messages}
                 emptyStateComponent={props.emptyStateComponent}
               />
               <div className="flex flex-col max-w-[768px] mx-auto pb-12 w-full">
-                <TokenVaultInterruptHandler interrupt={chat.interrupt} onFinish={() => chat.submit(null)} />
+                <TokenVaultInterruptHandler interrupt={toolInterrupt} />
               </div>
             </>
           )
@@ -173,7 +159,11 @@ export function ChatWindow(props: {
             <ChatInput
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onSubmit={sendMessage}
+              onSubmit={(e) => {
+                e.preventDefault();
+                sendMessage({ text: input });
+                setInput("");
+              }}
               loading={isChatLoading()}
               placeholder={props.placeholder ?? 'What can I help you with?'}
             ></ChatInput>
