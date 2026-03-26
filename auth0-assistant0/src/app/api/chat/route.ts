@@ -1,60 +1,87 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { type Message, LangChainAdapter } from 'ai';
-import { createReactAgent } from '@langchain/langgraph/prebuilt';
-import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { convertVercelMessageToLangChainMessage } from '@/utils/message-converters';
-import { logToolCallsInDevelopment } from '@/utils/stream-logging';
+import {
+  convertToModelMessages,
+  createUIMessageStream,
+  createUIMessageStreamResponse,
+  streamText,
+  UIMessage,
+} from 'ai';
+import { NextRequest } from 'next/server';
 
+import { gmailDraftTool, gmailSearchTool } from '@/lib/tools/gmail';
+import { openai } from '@ai-sdk/openai';
+import { setAIContext } from '@auth0/ai-vercel';
+import { errorSerializer, withInterruptions } from '@auth0/ai-vercel/interrupts';
 
-const AGENT_SYSTEM_TEMPLATE = `You are a personal assistant named Assistant0. You are a helpful assistant that can answer questions and help with tasks. You have access to a set of tools, use the tools as needed to answer the user's question.`;
+const date = new Date().toISOString();
+
+const AGENT_SYSTEM_TEMPLATE = `You are a personal assistant named Assistant0 with access to Gmail. You can search emails using the gmailSearchTool and compose emails using the gmailDraftTool. When users ask about emails, always use these tools. For example, if they ask to search emails, use gmailSearchTool with appropriate query parameters. If they want to send an email, use gmailDraftTool with the message details. You have full access to Gmail functionality. The current date and time is ${date}`;
 
 /**
- * This handler initializes and calls an tool calling ReAct agent.
- * See the docs for more information:
- *
- * https://langchain-ai.github.io/langgraphjs/tutorials/quickstart/
+ * This handler initializes and calls an tool calling agent.
  */
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    /**
-     * We represent intermediate steps as system messages for display purposes,
-     * but don't want them in the chat history.
-     */
-    const messages = (body.messages ?? [])
-      .filter((message: Message) => message.role === 'user' || message.role === 'assistant')
-      .map(convertVercelMessageToLangChainMessage);
+  const { id, messages }: { id: string; messages: Array<UIMessage> } = await req.json();
 
-    const llm = new ChatGoogleGenerativeAI({
-        temperature: 0,
-        model: "gemini-2.5-flash",
-        apiKey: process.env.GOOGLE_API_KEY,
-        maxRetries: 2
-    });
+  console.log('💬 Chat request received:', { id, messageCount: messages.length });
 
-    /**
-     * Use a prebuilt LangGraph agent.
-     */
-    const agent = createReactAgent({
-      llm,
-      tools,
-      // Modify the stock prompt in the prebuilt agent.
-      stateModifier: AGENT_SYSTEM_TEMPLATE,
-    });
+  setAIContext({ threadID: id });
 
-    /**
-     * Stream back all generated tokens and steps from their runs.
-     *
-     * See: https://langchain-ai.github.io/langgraphjs/how-tos/stream-tokens/
-     */
-    const eventStream = agent.streamEvents({ messages }, { version: 'v2' });
+  const tools = {
+    gmailSearchTool,
+    gmailDraftTool,
+  };
 
-    // Log tool calling data. Only in development mode
-    const transformedStream = logToolCallsInDevelopment(eventStream);
+  console.log('🛠️ Tools available:', Object.keys(tools));
 
-    return LangChainAdapter.toDataStreamResponse(transformedStream);
-  } catch (e: any) {
-    console.error(e);
-    return NextResponse.json({ error: e.message }, { status: e.status ?? 500 });
-  }
+  const modelMessages = await convertToModelMessages(messages);
+
+ 
+  const stream = createUIMessageStream({
+    originalMessages: messages,
+    execute: withInterruptions(
+      async ({ writer }) => {
+        const result = streamText({
+          model: openai('gpt-4o'),
+          system: AGENT_SYSTEM_TEMPLATE,
+          messages: modelMessages,
+          tools,
+
+          onFinish: (output) => {
+            console.log('🤖 AI response finished with reason:', output.finishReason);
+            if (output.finishReason === 'tool-calls') {
+              console.log('🔧 Tool calls detected:', output.content);
+              const lastMessage = output.content[output.content.length - 1];
+              if (lastMessage?.type === 'tool-error') {
+                const { toolName, toolCallId, error, input } = lastMessage;
+                console.error('❌ Tool error:', { toolName, toolCallId, error, input });
+                const serializableError = {
+                  cause: error,
+                  toolCallId: toolCallId,
+                  toolName: toolName,
+                  toolArgs: input,
+                };
+
+                throw serializableError;
+              }
+            }
+          },
+        });
+        writer.merge(
+          result.toUIMessageStream({
+            sendReasoning: true,
+          }),
+        );
+      },
+      {
+        messages: messages,
+        tools,
+      },
+    ),
+    onError: errorSerializer((err) => {
+      console.error('ai-sdk route: stream error', err);
+      return 'Oops, an error occured!';
+    }),
+  });
+
+  return createUIMessageStreamResponse({ stream });
 }

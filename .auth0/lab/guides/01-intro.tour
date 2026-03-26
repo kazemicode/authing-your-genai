@@ -12,9 +12,9 @@
       "description": "## Prerequisites\n\nIn addition to your Auth0 account, you will need a Google AI Studio account to generate a Gemini API key. Though you can use any AI model, we use Gemini for this lab since it has a free tier that does not require the input of a credit card.\n\n1. If you don't have one already, create a free account at https://ai.google.dev/aistudio. \n2. Sign into your Google AI Studio account.\n3. Select the **Get API key** button.\n4. Select the **+ Create API key** button.\n5. *If you have multiple existing projects in your account*, you will be asked to select a project and prompted to select an additional **Create API key in existing project** button.\n\n>Your Gemini API key is generated on the next page. Keep this open for the next step."
     },
     {
-      "title": "Set GOOGLE_API_KEY",
+      "title": "Set Google Generative AI API key",
       "file": "auth0-assistant0/.env.local",
-      "description": "## Set GOOGLE_API_KEY\n\n1. From the Google Gemini window, select the key that was just generated (under the **Key** column to reveal its value.\n2. Select the **Copy** button to copy your API key.\n3. Paste this value on the line highlighted above to set the **GOOGLE_API_KEY** variable.\n4. You may now exit the Google AI Studio tab.\n",
+      "description": "## Set Google Generative AI API key\n\n1. From the Google Gemini window, select the key that was just generated (under the **Key** column to reveal its value.\n2. Select the **Copy** button to copy your API key.\n3. Paste this value on the line highlighted above to set the **GOOGLE_GENERATIVE_AI_API_KEY** variable.\n4. You may now exit the Google AI Studio tab.\n",
       "line": 1,
       "selection": {
         "start": {

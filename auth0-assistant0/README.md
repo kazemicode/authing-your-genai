@@ -1,13 +1,10 @@
-## Assistant0: An AI Personal Assistant Secured with Auth0
+## Assistant0: An AI Personal Assistant for Gmail Secured with Auth0
 
-Imagine an AI personal assistant that consolidates your digital life by dynamically accessing multiple tools to help you stay organized and efficient. Here’s how it could work:
+Imagine an AI personal assistant that helps you manage your emails by dynamically accessing Gmail to read and compose messages. Here's how it works:
 
-1. **Gmail Integration:** The assistant regularly scans your inbox to generate concise summaries. It highlights urgent emails, categorizes conversations by importance, and even suggests drafts for quick replies.
-2. **Calendar Management:** By interfacing with your calendar, it can remind you of upcoming meetings, check for scheduling conflicts, and even propose the best time slots for new appointments based on your availability.
-3. **Slack Notifications:** For team communications, the assistant monitors Slack channels. It identifies key messages and creates action items, ensuring you never miss an important update from your colleagues.
-4. **Google Drive Access:** Whether you need immediate access to the latest project document or a file related to a current task, the assistant retrieves pertinent documents from Google Drive on demand. It can create document summaries and even create documents based on your instructions.
+1. **Gmail Integration:** The assistant can search your inbox, read emails, and compose drafts. It can help you stay organized by summarizing conversations, highlighting important messages, and drafting replies.
 
-With tool-calling capabilities, the possibilities are endless. In this conceptual scenario, the AI agent embodies a digital personal secretary—one that not only processes information but also proactively collates data from connected services to provide comprehensive task management. This level of integration not only enhances efficiency but also ushers in a new era of intelligent automation, where digital assistants serve as reliable, all-in-one solutions that tailor themselves to your personal and professional needs.
+With tool-calling capabilities, the AI agent can securely access your Gmail using Auth0 Token Vault, without storing your credentials in the application.
 
 ### Security Challenges with Tool Calling AI Agents
 
@@ -37,9 +34,8 @@ This is made possible by Federated API token exchange, which is a way to obtain 
 
 ## About the template
 
-This template scaffolds an Auth0 + LangChain.js + Next.js starter app. It mainly uses the following libraries:
+This template scaffolds an Auth0 + Vercel AI SDK + Next.js starter app. It mainly uses the following libraries:
 
-- [LangGraph.js](https://langchain-ai.github.io/langgraphjs/) and LangChain's framework for building agentic workflows.
 - Vercel's [AI SDK](https://github.com/vercel-labs/ai) to stream tokens to the client and display the incoming messages.
 - The Auth0 [AI SDK](https://github.com/auth0-lab/auth0-ai-js) and [Next.js SDK](https://github.com/auth0/nextjs-auth0) to secure the application and call third-party APIs.
 
