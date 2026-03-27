@@ -1,24 +1,7 @@
-import { Auth0AI, getAccessTokenFromTokenVault } from '@auth0/ai-vercel';
-import { getRefreshToken } from './auth0';
+// Import necessary modules
 
 // Get the access token for a connection via Auth0
-export const getAccessToken = async () => {
-  console.log('🔑 Requesting Gmail access token...');
-  const token = await getAccessTokenFromTokenVault();
-  console.log('🔑 Gmail access token obtained:', token ? 'Yes' : 'No');
-  return token;
-};
 
-const auth0AI = new Auth0AI();
-
+// Instantiate the Auth0AI client
 // Connection for Google services
-export const withGmailRead = auth0AI.withTokenVault({
-  connection: 'google-oauth2',
-  scopes: ['openid', 'https://www.googleapis.com/auth/gmail.readonly'],
-  refreshToken: getRefreshToken,
-});
-export const withGmailWrite = auth0AI.withTokenVault({
-  connection: 'google-oauth2',
-  scopes: ['openid', 'https://www.googleapis.com/auth/gmail.compose'],
-  refreshToken: getRefreshToken,
-});
+

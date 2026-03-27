@@ -9,7 +9,7 @@
       "name": "Assistant0",
       "directory": "auth0-assistant0",
        "env": {
-        "GOOGLE_API_KEY": "YOUR_API_KEY",
+        "OPENAI_API_KEY": "YOUR_API_KEY",
         "LANGCHAIN_CALLBACKS_BACKGROUND": "false",
         "AUTH0_SECRET": "use [openssl rand -hex 32] to generate a 32 bytes value",
         "APP_BASE_URL": "",
