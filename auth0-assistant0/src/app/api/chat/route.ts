@@ -6,12 +6,11 @@ import {
   UIMessage,
 } from 'ai';
 import { NextRequest } from 'next/server';
-
-import { gmailDraftTool, gmailSearchTool } from '@/lib/tools/gmail';
 import { openai } from '@ai-sdk/openai';
 import { setAIContext } from '@auth0/ai-vercel';
 import { errorSerializer, InterruptionPrefix, withInterruptions } from '@auth0/ai-vercel/interrupts';
 import { TokenVaultInterrupt } from '@auth0/ai/interrupts';
+// import Gmail tools
 
 const date = new Date().toISOString();
 
@@ -27,10 +26,8 @@ export async function POST(req: NextRequest) {
 
   setAIContext({ threadID: id });
 
-  const tools = {
-    gmailSearchTool,
-    gmailDraftTool,
-  };
+  // Add Gmail tools to the agent's toolset
+  const tools = {};
 
   console.log('🛠️ Tools available:', Object.keys(tools));
 
@@ -59,12 +56,7 @@ export async function POST(req: NextRequest) {
                     authorizationParams: tokenError.authorizationParams || {},
                     behavior: tokenError.behavior || 'resume',
                   });
-                  throw {
-                    cause: interrupt,
-                    toolCallId: chunk.toolCallId,
-                    toolName: chunk.toolName,
-                    toolArgs: chunk.input,
-                  };
+                  throw interrupt;
                 }
               }
               controller.enqueue(chunk);
