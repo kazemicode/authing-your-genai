@@ -66,11 +66,11 @@
       "title": "Update the list of tools",
       "selection": {
         "start": {
-          "line": 30,
+          "line": 31,
           "character": 3
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "character": 38
         }
       }
