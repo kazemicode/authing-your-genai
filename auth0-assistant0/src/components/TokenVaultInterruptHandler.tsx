@@ -15,7 +15,7 @@ export function TokenVaultInterruptHandler({ interrupt }: TokenVaultInterruptHan
   return (
     <div key={interrupt.name} className="whitespace-pre-wrap">
       <TokenVaultConsent
-        mode="popup"
+        mode="redirect"
         interrupt={interrupt}
         connectWidget={{
           title: 'Authorization Required.',

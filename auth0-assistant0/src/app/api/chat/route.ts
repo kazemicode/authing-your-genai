@@ -10,7 +10,8 @@ import { NextRequest } from 'next/server';
 import { gmailDraftTool, gmailSearchTool } from '@/lib/tools/gmail';
 import { openai } from '@ai-sdk/openai';
 import { setAIContext } from '@auth0/ai-vercel';
-import { errorSerializer, withInterruptions } from '@auth0/ai-vercel/interrupts';
+import { errorSerializer, InterruptionPrefix, withInterruptions } from '@auth0/ai-vercel/interrupts';
+import { TokenVaultInterrupt } from '@auth0/ai/interrupts';
 
 const date = new Date().toISOString();
 
@@ -35,7 +36,7 @@ export async function POST(req: NextRequest) {
 
   const modelMessages = await convertToModelMessages(messages);
 
- 
+
   const stream = createUIMessageStream({
     originalMessages: messages,
     execute: withInterruptions(
@@ -45,24 +46,38 @@ export async function POST(req: NextRequest) {
           system: AGENT_SYSTEM_TEMPLATE,
           messages: modelMessages,
           tools,
+          experimental_transform: ({ tools: _tools }) => new TransformStream({
+            transform(chunk, controller) {
+              if (chunk.type === 'tool-error') {
+                const tokenError = chunk.error as any;
+                if (tokenError && tokenError.code === 'TOKEN_VAULT_ERROR') {
+                  console.log('🔐 Token vault error detected in stream, throwing interrupt');
+                  const interrupt = new TokenVaultInterrupt(tokenError.message || 'Token vault authorization required', {
+                    connection: tokenError.connection,
+                    scopes: tokenError.scopes || [],
+                    requiredScopes: tokenError.requiredScopes || [],
+                    authorizationParams: tokenError.authorizationParams || {},
+                    behavior: tokenError.behavior || 'resume',
+                  });
+                  throw {
+                    cause: interrupt,
+                    toolCallId: chunk.toolCallId,
+                    toolName: chunk.toolName,
+                    toolArgs: chunk.input,
+                  };
+                }
+              }
+              controller.enqueue(chunk);
+            },
+          }),
 
           onFinish: (output) => {
             console.log('🤖 AI response finished with reason:', output.finishReason);
             if (output.finishReason === 'tool-calls') {
-              console.log('🔧 Tool calls detected:', output.content);
-              const lastMessage = output.content[output.content.length - 1];
-              if (lastMessage?.type === 'tool-error') {
-                const { toolName, toolCallId, error, input } = lastMessage;
-                console.error('❌ Tool error:', { toolName, toolCallId, error, input });
-                const serializableError = {
-                  cause: error,
-                  toolCallId: toolCallId,
-                  toolName: toolName,
-                  toolArgs: input,
-                };
-
-                throw serializableError;
-              }
+              console.log('🔧 Tool calls detected:', {
+                toolCalls: output.toolCalls,
+                toolResults: output.toolResults,
+              });
             }
           },
         });
@@ -77,8 +92,8 @@ export async function POST(req: NextRequest) {
         tools,
       },
     ),
-    onError: errorSerializer((err) => {
-      console.error('ai-sdk route: stream error', err);
+    onError: errorSerializer((error) => {
+      console.error('ai-sdk route: stream error', error);
       return 'Oops, an error occured!';
     }),
   });
