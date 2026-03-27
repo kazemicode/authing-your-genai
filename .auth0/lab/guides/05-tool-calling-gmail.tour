@@ -46,31 +46,31 @@
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
       "description": "## Import the Gmail tools\n\n**Notice that the agent code implemented in the `src/api/chat/route.ts` has been opened for you above. We will add some code in this step.**\n\nIn order to implement Gmail tool-calling, we'll need to import the Gmail tools.\n\n1. Import the Gmail tools with the code below by selecting **Insert Code**.\n\n```ts\nimport { gmailDraftTool, gmailSearchTool } from '@/lib/tools/gmail';\n\n```\n\n> The `gmailDraftTool` is used compose email while `gmailSearchTool` is used to search and reach emails from your inbox.",
-      "line": 9,
+      "line": 13,
       "selection": {
         "start": {
-          "line": 7,
-          "character": 4
+          "line": 13,
+          "character": 1
         },
         "end": {
-          "line": 7,
-          "character": 1
+          "line": 13,
+          "character": 25
         }
       },
       "title": "Import the Gmail tools"
     },
     {
       "file": "auth0-assistant0/src/app/api/chat/route.ts",
-      "description": "## Update the list of tools\n\n1. Now we need to add our Gmail tools to the list the agent has access to. Currently the list is empty so let's replace that code with the snippet below by selecting **Insert Code** below:\n\n```ts\n const tools = {\n    gmailSearchTool,\n    gmailDraftTool,\n  };\n```\n",
-      "line": 42,
+      "description": "## Update the list of tools\n\n1. Now we need to add our Gmail tools to the list the agent has access to. Currently the list is empty so let's replace that code with the snippet below by selecting **Insert Code** below:\n\n```ts\n const tools = { gmailSearchTool, gmailDraftTool };\n```\n",
+      "line": 30,
       "title": "Update the list of tools",
       "selection": {
         "start": {
-          "line": 42,
-          "character": 5
+          "line": 30,
+          "character": 3
         },
         "end": {
-          "line": 42,
+          "line": 30,
           "character": 38
         }
       }
